@@ -19,7 +19,7 @@ public class LongestSubStringWithoutRepeatingChar {
         // Start from i=0
         // Check if a character is already seen before
         // If yes, save the string so far in this iteration
-        // compare length of stringStaringHere with longestSubstring.
+        // compare currentSize of stringStaringHere with longestSubstring.
         // If stringStaringHere is bigger, assign it to longestSubstring
         //
         // Keep iterating  and adding to string untill we find a repeating char

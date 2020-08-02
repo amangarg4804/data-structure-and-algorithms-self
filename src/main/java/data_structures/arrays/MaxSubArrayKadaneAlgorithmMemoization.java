@@ -1,7 +1,7 @@
 package data_structures.arrays;
 
 public class MaxSubArrayKadaneAlgorithmMemoization {
-    // Kadane's Algorithm
+    // Kadane's Algorithm (Microsoft interview question)
     //The maximum sum in the first I elements
     // is either the maximum sum in the first i - 1 elements (which we'll call MaxSoFar),
     // or it is that of a subvector that ends in position i (which we'll call MaxEndingHere).
