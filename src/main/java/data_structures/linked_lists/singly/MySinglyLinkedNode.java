@@ -2,8 +2,8 @@ package data_structures.linked_lists.singly;
 
 public class MySinglyLinkedNode {
 
-  private int value;
-  private MySinglyLinkedNode next;
+  int value;
+  MySinglyLinkedNode next;
 
   public MySinglyLinkedNode(int value) {
     this.value = value;
