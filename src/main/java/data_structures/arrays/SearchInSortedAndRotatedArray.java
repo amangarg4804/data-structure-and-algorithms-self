@@ -22,7 +22,7 @@ public class SearchInSortedAndRotatedArray {
     }
 
     private static int searchOptimized(int[] arr, int searchElement) {
-        // O(Log(n))
+        // O(Log(n)), similar to Binary search
         int left = 0;
         int right = arr.length -1;
 

@@ -6,9 +6,8 @@ import java.util.Set;
 public class KeyPairMicrosoft {
 
     public static void main(String[] args) {
-        int arr[] = {1, 4, 45, 6, 10, 8};
+        int []arr = {1, 4, 45, 6, 10, 8};
         int sum = 16;
-
         System.out.println(containsSumBruteForce(arr, sum));
     }
 
@@ -25,7 +24,6 @@ public class KeyPairMicrosoft {
     }
 
     private static boolean containsSum(int[] arr, int sum) {
-
         Set<Integer> set = new HashSet<>();
         for(int i = 0 ; i< arr.length; i++) {
             if(set.contains(arr[i])) {
@@ -35,5 +33,4 @@ public class KeyPairMicrosoft {
         }
         return false;
     }
-
 }

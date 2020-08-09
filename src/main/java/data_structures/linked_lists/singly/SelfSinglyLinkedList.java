@@ -98,6 +98,43 @@ public class SelfSinglyLinkedList {
         }
     }
 
+    int getMiddle(Node head)
+    {
+        // get data of middle element of a linked list
+        int total=0;
+        Node currentNode = head;
+        while (currentNode != null) {
+            currentNode = currentNode.next;
+            total++;
+        }
+        int index= total/2;
+        currentNode = head;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode.data;
+
+    }
+
+    int getMiddleFloyd(Node head)
+    {
+        Node hare = head;
+        Node tortoise = head;
+        while (hare!=null && hare.next!=null) {
+            tortoise = tortoise.next;
+            hare = hare.next.next;
+        }
+        return tortoise.data;
+    }
+
+    public void delete (Node node) {
+        // Delete a given node when head is not given
+        // copy data of next node to given node and then the problem becomes:
+        //delete a node when leader node is given
+        node.data = node.next.data;
+        node.next = node.next.next;
+    }
+
 
     private Node createNode(Integer data) {
         return new Node(data);

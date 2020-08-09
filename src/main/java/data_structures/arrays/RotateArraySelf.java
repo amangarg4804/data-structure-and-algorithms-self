@@ -12,9 +12,16 @@ public class RotateArraySelf {
         for (int i : result) {
             System.out.print(i);
         }
+        System.out.println();
+        rotateArrayOptimized(nums, k);
+        for (int i : nums) {
+            System.out.print(i);
+        }
     }
 
     private static int[] rotateArray(int[] nums, int k) {
+        // O(n) time
+        // O(n) extra space
 
         int[] resultArr = new int[nums.length];
 
@@ -35,8 +42,24 @@ public class RotateArraySelf {
         return resultArr;
     }
 
-    private static int[] rotateArrayInPlace(int[] nums, int k) {
-        // TODO:
-        return null;
+    private static void rotateArrayOptimized(int[] nums, int k) {
+        // In place
+        // time O(n) Space O(1)
+
+        // TODO: Test
+        k = k % nums.length;
+        reverseArray(nums, 0, nums.length - 1);
+        reverseArray(nums, 0, k - 1);
+        reverseArray(nums, k, nums.length - 1);
+    }
+
+    private static void reverseArray(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
     }
 }

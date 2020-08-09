@@ -44,6 +44,7 @@ public class MergeSortedArraySelf {
         // if 0th element is arr 2 is less,
         // then it means arr1 is having a large element which is larger than the smallest element in arr2
         // use insertion sort on arr2 to keep it sorted
+        // TODO: Revisit after sorting
         for(int i=0; i< arr1.length; i++) {
             if(arr1[i] > arr2[0]) {
                 int elementFromArr1 = arr1[i];

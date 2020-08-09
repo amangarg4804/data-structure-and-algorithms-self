@@ -16,4 +16,6 @@ public class ReverseALinkedList {
         list.head = prev;
         return prev;
     }
+
+
 }

@@ -2,7 +2,6 @@ package data_structures.arrays;
 
 import java.util.Arrays;
 
-// TODO:
 public class MyArrayList {
 
     String[] arr;

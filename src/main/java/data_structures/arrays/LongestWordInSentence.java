@@ -1,6 +1,5 @@
 package data_structures.arrays;
 
-//TODO:
 public class LongestWordInSentence {
 
     public static void main(String[] args) {
