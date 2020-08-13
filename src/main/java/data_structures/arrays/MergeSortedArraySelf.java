@@ -60,4 +60,18 @@ public class MergeSortedArraySelf {
             }
         }
     }
+
+    private static void mergeSortedArraysInPlaceInsertionSort(int[] arr1, int[] arr2) {
+        // Comparing ith element in arr1 with 0th element in arr2
+        // if 0th element is arr 2 is less,
+        // then it means arr1 is having a large element which is larger than the smallest element in arr2
+        // use insertion sort on arr2 to keep it sorted
+        // TODO: Revisit after Shell sort
+        for(int i=0; i< arr1.length; i++) {
+            if(arr1[i] > arr2[0]) {
+                int key = arr2[0];
+                arr2[0] = arr1[i];
+            }
+        }
+    }
 }

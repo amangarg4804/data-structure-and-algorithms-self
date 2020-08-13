@@ -115,6 +115,7 @@ public class MyBinarySearchTree {
     Queue<MyBinaryNode> queue = new LinkedList<>();
     queue.add(currentNode);
 
+
     while (!queue.isEmpty()) {
       currentNode = queue.poll();
       list.add(currentNode.getValue());

@@ -1,5 +1,8 @@
 package algorithms.recursion;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FibonacciSequenece {
 
     public static void main(String[] args) {
@@ -8,6 +11,10 @@ public class FibonacciSequenece {
 
         System.out.println(fibonacciIterative(3));
         System.out.println(fibonacciIterative(4));
+
+        System.out.println(fibonacciDynamicProgramming(3, new HashMap<>()));
+        System.out.println(fibonacciDynamicProgramming(4, new HashMap<>()));
+
     }
 
     private static int fibonacci(int n) {
@@ -20,6 +27,19 @@ public class FibonacciSequenece {
             return 1;
         }
         return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    private static int fibonacciDynamicProgramming(int n, Map<Integer, Integer> map) {
+
+        // O(2^n) very expensive, greater than n^2
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        map.put(n, fibonacci(n - 1) + fibonacci(n - 2));
+        return map.get(n);
     }
 
     private static int fibonacciIterative(int n) {
@@ -40,7 +60,7 @@ public class FibonacciSequenece {
         int previous = 1;
         int result = 0;
 
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i <= n; i++) {
             result = beforePrevious + previous;
             beforePrevious = previous;
             previous = result;
