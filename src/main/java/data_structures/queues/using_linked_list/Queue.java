@@ -1,5 +1,6 @@
 package data_structures.queues.using_linked_list;
 
+//self
 public class Queue {
     private MySinglyLinkedNode first;
     private MySinglyLinkedNode last;

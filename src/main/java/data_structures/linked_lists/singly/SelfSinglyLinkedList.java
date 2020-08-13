@@ -150,8 +150,8 @@ public class SelfSinglyLinkedList {
     }
 
     public static class Node {
-        Integer data;
-        Node next;
+        public Integer data;
+        public Node next;
 
         public Node(Integer data) {
             this.data = data;
