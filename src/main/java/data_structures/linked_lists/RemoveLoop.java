@@ -14,6 +14,7 @@ public class RemoveLoop {
     // But what if we can't modify the linked list?
 
     public static void removeLoop(Node head) {
+        // https://www.youtube.com/watch?v=zNMy47gX8qQ
         if (head == null) {
             return;
         }
