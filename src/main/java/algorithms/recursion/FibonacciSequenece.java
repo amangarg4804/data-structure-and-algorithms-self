@@ -13,7 +13,7 @@ public class FibonacciSequenece {
         System.out.println(fibonacciIterative(4));
 
         System.out.println(fibonacciDynamicProgramming(3, new HashMap<>()));
-        System.out.println(fibonacciDynamicProgramming(4, new HashMap<>()));
+        System.out.println(fibonacciDynamicProgramming(10, new HashMap<>()));
 
     }
 
