@@ -18,6 +18,9 @@ public class ConvertRomanToInteger {
 
     public static void main(String[] args) {
         System.out.println(convertRomanToInteger("XXX"));
+        System.out.println(convertRomanToInteger("IV"));
+        System.out.println(getInt("XXX"));
+        System.out.println(getInt("IV"));
     }
 
     private static int convertRomanToInteger(String s) {
@@ -32,6 +35,18 @@ public class ConvertRomanToInteger {
             }
         }
 
+        return result;
+    }
+
+    public static Integer getInt(String roman) {
+        int result=0;
+        char[] c = roman.toCharArray();
+        for(int i=0; i< roman.length(); i++) {
+            result +=map.get(c[i]);
+            if(i> 0 && map.get(c[i]) > map.get(c[i-1])) {
+                result = result - 2*map.get(c[i-1]);
+            }
+        }
         return result;
     }
 

@@ -1,4 +1,4 @@
-package algorithms;
+package basic;
 
 public class ShiftOperators {
 
