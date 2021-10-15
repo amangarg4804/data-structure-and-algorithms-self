@@ -1,4 +1,4 @@
-package data_structures.arrays;
+package algorithms.leetcode;
 
 import java.util.List;
 
