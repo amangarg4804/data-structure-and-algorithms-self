@@ -23,7 +23,7 @@ public class LongestSubStringWithoutRepeatingChar {
         // If stringStaringHere is bigger, assign it to longestSubstring
         //
         // Keep iterating  and adding to string untill we find a repeating char
-        // Save the current string into max
+            // Save the current string into max
         // i++
 
         // pwwkew
