@@ -1,7 +1,6 @@
 package algorithms.patterns.slidingwindow;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
