@@ -29,6 +29,8 @@ public class StringPermutation {
         }
       }
       if (matched == characterFrequencyInPattern.size()) {
+        // because map size is equal to no of characters in pattern.
+        // Map size doesn't change even though the value for each key is 0
         return true;
       }
       if(windowEnd >= pattern.length() -1) {
