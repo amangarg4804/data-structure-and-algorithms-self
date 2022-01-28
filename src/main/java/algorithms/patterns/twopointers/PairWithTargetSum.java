@@ -1,7 +1,8 @@
 package algorithms.patterns.twopointers;
 
 import java.util.Arrays;
-
+//Given an array of sorted numbers and a target sum,
+// find a pair in the array whose sum is equal to the given target.
 public class PairWithTargetSum {
 
   public static void main(String[] args) {
