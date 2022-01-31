@@ -21,7 +21,7 @@ public class TripletSumLessThanTarget {
         int diff = arr[i] + arr[left] + arr[right] - target;
         if (diff < 0) {
           // because the array is sorted. arr[right] is greater than arr[left].
-          // So, arr[right] can be replaced with any value between left and right to get a sum less that current sum
+            // So, arr[right] can be replaced with any value between left and right to get a sum less that current sum
           count += right - left;
           left++;
         } else {
