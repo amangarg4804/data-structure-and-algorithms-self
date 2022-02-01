@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// Given an array of unsorted numbers and a target number, find all unique quadruplets in it,
+// whose sum is equal to the target number.
 public class QuadrupleSumToTarget {
 
   public static void main(String[] args) {
@@ -15,11 +17,11 @@ public class QuadrupleSumToTarget {
     List<List<Integer>> list = new ArrayList<>();
     Arrays.sort(arr);
     for (int i = 0; i < arr.length - 3; i++) {
-      if ( i> 0 && arr[i] == arr[i - 1]) {
+      if (i > 0 && arr[i] == arr[i - 1]) {
         continue;
       }
       for (int j = i + 1; j < arr.length - 2; j++) {
-        if ( j > i+1 && arr[j] == arr[j - 1]) {
+        if (j > i + 1 && arr[j] == arr[j - 1]) {
           continue;
         }
         searchQuadruplets(arr, sum, list, i, j);
@@ -34,7 +36,7 @@ public class QuadrupleSumToTarget {
     int right = arr.length - 1;
 
     while (left < right) {
-      int currentSum = arr[first] + arr[second] + arr[left] + arr[right] ;
+      int currentSum = arr[first] + arr[second] + arr[left] + arr[right];
       if (currentSum < targetSum) {
         left++;
       } else if (currentSum > targetSum) {
