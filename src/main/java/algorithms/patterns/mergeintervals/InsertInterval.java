@@ -56,4 +56,23 @@ public class InsertInterval {
     mergedIntervals.add(new Interval(start, end));
     return mergedIntervals;
   }
+
+  public static List<Interval> insertWithoutModifyingOriginalList(List<Interval> intervals, Interval newInterval) {
+    List<Interval> mergedIntervals = new ArrayList<>();
+    int i=0;
+    while(i < intervals.size() && intervals.get(i).end < newInterval.start) {
+      mergedIntervals.add(intervals.get(i++));
+    }
+
+    while(i < intervals.size() && intervals.get(i).start > newInterval.end ) {
+      newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
+      newInterval.end = Math.min(intervals.get(i).end, newInterval.end);
+      i++;
+    }
+    mergedIntervals.add(newInterval);
+    while(i< intervals.size()) {
+      mergedIntervals.add(intervals.get(i++));
+    }
+    return mergedIntervals;
+  }
 }
