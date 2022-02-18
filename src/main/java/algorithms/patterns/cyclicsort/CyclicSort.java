@@ -7,15 +7,15 @@ public class CyclicSort {
 
   public static void main(String[] args) {
     int[] arr1 = new int[] {3, 1, 5, 4, 2};
-    sortSingleLoop(arr1);
+    sortSingleLoopOtherWay(arr1);
     System.out.println(Arrays.toString(arr1));
 
     int[] arr2 = new int[] {2, 6, 4, 3, 1, 5};
-    sortSingleLoop(arr2);
+    sortSingleLoopOtherWay(arr2);
     System.out.println(Arrays.toString(arr2));
 
     int[] arr3 = new int[] {1, 5, 6, 4, 3, 2};
-    sortSingleLoop(arr3);
+    sortSingleLoopOtherWay(arr3);
     System.out.println(Arrays.toString(arr3));
 
   }
@@ -46,6 +46,24 @@ public class CyclicSort {
     }
   }
 
+  public static void sortSingleLoopOtherWay(int[] nums) {
+   // int[] arr2 = new int[] {2, 6, 4, 3, 1, 5};
+    int i=0;
+    while (i< nums.length) {
+      int correctIndex = nums[i] - 1;
+      if(nums[i] != nums[correctIndex])  {
+        swap(nums, i, correctIndex);
+      } else {
+        i++;
+      }
+    }
+  }
+
+  private static void swap(int[] nums, int i, int j) {
+    int temp = nums[j];
+    nums[j] = nums[i];
+    nums[i] = temp;
+  }
 
 
 
