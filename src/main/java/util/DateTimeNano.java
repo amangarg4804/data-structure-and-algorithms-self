@@ -75,6 +75,12 @@ public class DateTimeNano {
     ZonedDateTime zonedDateTime = LocalDateTime.now().atZone(ZoneId.of("Etc/UTC"));
     String formatterUtcDateTime = zonedDateTime.format(targetFormatter);
     System.out.println(formatterUtcDateTime);
+
+    // HH instead of hh, hh is hour of clock, HH is hour of day
+    LocalDateTime localDateTime3 = LocalDateTime.parse("11/16/2021 12:14:33.786",DateTimeFormatter.ofPattern( "MM/dd/yyyy HH:mm:ss.SSS") );
+    System.out.println(localDateTime3);
+
+
   }
 
 }
