@@ -5,7 +5,7 @@ public class DuplicateNumber {
   public static void main(String[] args) {
     System.out.println(findNumber(new int[]{1, 4, 4, 3, 2}));
     System.out.println(findNumber(new int[]{2, 1, 3, 3, 5, 4}));
-    System.out.println(findNumber(new int[]{2, 4, 1, 4, 4}));
+    System.out.println(findNumberMethod2(new int[]{2, 4, 1, 4, 4}));
   }
 
   public static int findNumber(int[] nums) {
@@ -21,7 +21,24 @@ public class DuplicateNumber {
         i++;
       }
     }
-    return 0;
+    return -1;
+  }
+
+  public static int findNumberMethod2(int[] nums) {
+    int i=0;
+    while (i< nums.length) {
+      if(nums[i] != i+1) {
+        int j = nums[i] -1;
+        if(nums[i] != nums[j]) {
+          swap(nums, i, j);
+        } else {
+          return nums[i];
+        }
+      } else {
+        i++;
+      }
+    }
+    return -1;
   }
 
   private static void swap(int[] nums, int i, int j) {
