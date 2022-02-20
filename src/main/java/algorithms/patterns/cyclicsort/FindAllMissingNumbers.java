@@ -3,7 +3,7 @@ package algorithms.patterns.cyclicsort;
 import java.util.ArrayList;
 import java.util.List;
 
-//We are given an array containing ‘n’ distinct numbers taken from the range 0 to ‘n’. Since the array has only ‘n’ numbers out of the total ‘n+1’ numbers, find the missing number.
+//We are given an unsorted array containing numbers taken from the range 1 to ‘n’. The array can have duplicates, which means some numbers will be missing. Find all those missing numbers.
 public class FindAllMissingNumbers {
 
   public static void main(String[] args) {
