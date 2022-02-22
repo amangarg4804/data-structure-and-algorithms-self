@@ -39,6 +39,8 @@ public class ReverseOfASublist {
 
     if(lasNodeOfFirstPart != null) {
       lasNodeOfFirstPart.next = previous;
+    } else {
+      head = previous;
     }
     lasNodeOfSubList.next = currentNode;
     return head;
