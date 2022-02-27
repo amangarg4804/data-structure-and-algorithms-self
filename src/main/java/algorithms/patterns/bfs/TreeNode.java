@@ -9,4 +9,9 @@ public class TreeNode {
   TreeNode(int x) {
     this.value = x;
   }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
 }
