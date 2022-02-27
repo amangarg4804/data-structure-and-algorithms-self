@@ -1,6 +1,6 @@
-package algorithms.patterns.bfs;
+package algorithms.patterns.dfs;
 
-class TreeNode {
+public class TreeNode {
 
   int value;
   TreeNode left;

@@ -1,6 +1,6 @@
 package algorithms.patterns.bfs;
 
-public class TreeNodeSibling {
+class TreeNodeSibling {
 
   int value;
   TreeNodeSibling left;
