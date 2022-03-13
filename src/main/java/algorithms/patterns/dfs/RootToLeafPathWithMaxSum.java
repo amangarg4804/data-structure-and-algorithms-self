@@ -3,7 +3,7 @@ package algorithms.patterns.dfs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PathWithMaxSum {
+public class RootToLeafPathWithMaxSum {
 
   static int maxSum = 0;
 
