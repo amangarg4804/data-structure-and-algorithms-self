@@ -32,7 +32,7 @@ public class TreeDiameter {
 
   public static int height(TreeNode root) {
     if (root == null) {
-      return 0;
+      return 0; // Some resources (MIT lectures) suggest that the height of a leaf node is 0 which means height of null is -1, they count the edges. Here we have counted nodes
     }
     int leftHeight = height(root.left);
     int rightHeight = height(root.right);
