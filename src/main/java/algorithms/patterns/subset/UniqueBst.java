@@ -28,11 +28,11 @@ public class UniqueBst {
     for(int i=start; i<=end ; i++) {
       List<TreeNode> leftSubtrees = findUniqueTrees(start, i-1);
       List<TreeNode> rightSubTrees = findUniqueTrees(i+1, end);
-      for(TreeNode left : leftSubtrees) {
-        for(TreeNode right : rightSubTrees) {
+      for(TreeNode leftSubTree : leftSubtrees) {
+        for(TreeNode rightSubTree : rightSubTrees) {
           TreeNode treeNode = new TreeNode(i);
-          treeNode.left = left;
-          treeNode.right = right;
+          treeNode.left = leftSubTree;
+          treeNode.right = rightSubTree;
           result.add(treeNode);
         }
       }
