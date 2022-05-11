@@ -1,4 +1,4 @@
-package interview_question.amazon_interview_questions;
+package algorithms.interview_question.amazon_interview_questions;
 
 import java.util.HashMap;
 import java.util.Stack;

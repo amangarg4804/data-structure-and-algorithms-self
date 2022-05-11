@@ -1,4 +1,4 @@
-package interview_question.facebook_interview_questions;
+package algorithms.interview_question.facebook_interview_questions;
 
 import java.util.HashSet;
 import java.util.Set;
