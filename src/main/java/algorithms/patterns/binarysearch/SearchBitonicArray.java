@@ -24,10 +24,18 @@ public class SearchBitonicArray {
       if(arr[mid] == key) {
         return mid;
       }
-      if(arr[mid] > key) {
-        end = mid -1;
+      if(arr[start] < arr[end]) {
+        if(arr[mid] > key) {
+          end = mid -1;
+        } else {
+          start = mid +1;
+        }
       } else {
-        start = mid +1;
+        if(arr[mid] > key) {
+          start = mid+1;
+        } else {
+          end = mid-1;
+        }
       }
     }
     return -1;
