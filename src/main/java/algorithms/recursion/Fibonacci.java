@@ -27,25 +27,25 @@ public class Fibonacci {
   }
 
   public static int fibonacciIteratively(int n) { //O(n)
-    if(n == 0) {
-      return 0;
+    if(n < 2) {
+      return n;
     }
-    int result = 1;
-    int lastNumber = 0;
-    int temp;
-    for (int i = 1; i < n; i++) {
-      temp = result;
-      result += lastNumber;
-      lastNumber = temp;
+    int previousMinusOne = 0;
+    int previous = 1;
+    for(int i =2 ; i<= n; i++) {
+      int temp = previous;
+      previous = previousMinusOne + previous; // 1
+      previousMinusOne = temp; // 1
+
     }
-    return result;
+    return previous;
   }
 
   public static void main(String[] args) {
-    num
-        = 0;
+    num = 0;
     System.out.println(fibonacciIteratively(10));
     System.out.println(fibonacciRecursivelyEfficient(50, 1 , 0));
     System.out.println(fibonacciRecursively(50));
   }
+
 }
