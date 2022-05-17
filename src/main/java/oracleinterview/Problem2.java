@@ -10,6 +10,7 @@ import java.util.TreeMap;
 
 public class Problem2 {
 
+  /// nth largest string from an array of non-null strings
   public static void main(String[] args) {
     // "abc" "abcd" "abcde" "abcdf"
     System.out.println(nthLargest(new String[]{"abc", "abcd", "a", "abcde", "abcdf", "", "" }, 5));
