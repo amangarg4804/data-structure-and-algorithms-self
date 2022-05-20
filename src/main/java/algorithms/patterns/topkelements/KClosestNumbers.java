@@ -21,9 +21,9 @@ public class KClosestNumbers {
     int left = Math.max(closestIndex -k , 0);
     int right = Math.min(closestIndex + k, arr.length-1);
 
-    PriorityQueue<Entry> minHeap = new PriorityQueue<>(Comparator.comparingInt(n -> n.diff));
+    PriorityQueue<HeapEntry> minHeap = new PriorityQueue<>(Comparator.comparingInt(n -> n.diff));
     for(int i= left ; i<=right; i++) {
-      minHeap.offer(new Entry(Math.abs(arr[i]-x), i));
+      minHeap.offer(new HeapEntry(Math.abs(arr[i]-x), i));
     }
 
     List<Integer> result = new ArrayList<>();
@@ -61,11 +61,11 @@ public class KClosestNumbers {
   }
 }
 
-class Entry {
+class HeapEntry {
   int diff;
   int index ;
 
-  public Entry(int diff, int index) {
+  public HeapEntry(int diff, int index) {
     this.diff = diff;
     this.index = index;
   }
