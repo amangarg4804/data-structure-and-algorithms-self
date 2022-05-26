@@ -3,7 +3,7 @@ package algorithms.patterns.kwaymerge;
 import java.util.PriorityQueue;
 
 //Given an array of ‘K’ sorted LinkedLists, merge them into one sorted list.
-public class MergeKSortedLists {
+public class MergeKSortedLinkedLists {
 
   public static void main(String[] args) {
     ListNode l1 = new ListNode(2);
