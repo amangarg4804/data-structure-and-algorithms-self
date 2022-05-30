@@ -16,7 +16,7 @@ public class KthSmallestInSortedMatrix {
   private static int kthSmallest(int[][] matrix, int k) {
     PriorityQueue<Node> minHeap = new PriorityQueue<>(
         (n1, n2) -> matrix[n1.row][n1.col] - matrix[n2.row][n2.col]);
-    for (int i = 0; i < matrix.length; i++) {
+    for (int i = 0; i < matrix.length; i++) { // can also add "&& i< k"
       if (matrix[i] != null) {
         minHeap.offer(new Node(i, 0));
       }
