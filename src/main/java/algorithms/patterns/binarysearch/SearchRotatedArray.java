@@ -17,14 +17,14 @@ public class SearchRotatedArray {
       }
       if(arr[mid] >= arr[start] ) {
         // left side is sorted
-        if(key >= start && key < arr[mid]) {
+        if(key >= arr[start] && key < arr[mid]) {
           end = mid-1;
         } else {
           start = mid +1 ;
         }
       } else {
         // right side is sorted
-        if(key > arr[mid]  && key <= arr[arr.length -1]) {
+        if(key > arr[mid]  && key <= arr[end]) {
           start = mid + 1;
         } else {
           end = mid -1;

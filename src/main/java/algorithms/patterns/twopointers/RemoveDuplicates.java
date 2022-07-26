@@ -31,8 +31,8 @@ public class RemoveDuplicates {
   public static int countUniqueAndMoveLeft (int[] arr) {
     int nextNonDuplicate = 1;
     // 2, 3, 3, 3, 6, 9, 9
-    for(int i = 0; i< arr.length; i++) {
-      // i=5, nextNonDuplicate = 3
+    for(int i = 1; i< arr.length; i++) {
+      // i=5, nextNonDuplicate = 2
       if(arr[nextNonDuplicate-1] != arr[i]) {
         arr[nextNonDuplicate] = arr[i];
         nextNonDuplicate++;

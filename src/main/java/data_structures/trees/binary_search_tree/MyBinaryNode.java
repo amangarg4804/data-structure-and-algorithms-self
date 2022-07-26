@@ -2,9 +2,9 @@ package data_structures.trees.binary_search_tree;
 
 public class MyBinaryNode {
 
-  private int value;
-  private MyBinaryNode left;
-  private MyBinaryNode right;
+  int value;
+  MyBinaryNode left;
+  MyBinaryNode right;
 
 
   public MyBinaryNode(int value, MyBinaryNode left, MyBinaryNode right) {

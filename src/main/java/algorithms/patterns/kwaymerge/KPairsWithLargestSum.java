@@ -24,7 +24,6 @@ public class KPairsWithLargestSum {
         if (minheap.size() < k) {
           minheap.offer(new int[]{nums1[i], nums2[j]});
         } else {
-
           if (nums1[i] + nums2[j] < minheap.peek()[0] + minheap.peek()[1]) {
             break;
           } else {

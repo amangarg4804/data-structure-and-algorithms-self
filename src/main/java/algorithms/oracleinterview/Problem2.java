@@ -1,4 +1,4 @@
-package oracleinterview;
+package algorithms.oracleinterview;
 
 import java.util.ArrayList;
 import java.util.Collections;

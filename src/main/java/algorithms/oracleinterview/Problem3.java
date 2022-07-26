@@ -1,4 +1,4 @@
-package oracleinterview;
+package algorithms.oracleinterview;
 
 public class Problem3 {
 // Write a method that takes a sorted array and a key and returns the index of first occurrence of that key in the array

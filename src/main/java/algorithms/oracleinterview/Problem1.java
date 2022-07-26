@@ -1,4 +1,4 @@
-package oracleinterview;
+package algorithms.oracleinterview;
 
 public class Problem1 {
 

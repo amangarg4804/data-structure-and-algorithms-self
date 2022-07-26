@@ -26,18 +26,18 @@ public class MyBinarySearchTree {
     }
     MyBinaryNode currentNode = root;
     while (true) {
-      if (currentNode.getValue() > value) {
-        if(currentNode.getLeft() == null) {
-          currentNode.setLeft(new MyBinaryNode(value));
+      if (currentNode.value > value) {
+        if(currentNode.left== null) {
+          currentNode.left = new MyBinaryNode(value);
           return;
         }
-        currentNode = currentNode.getLeft();
+        currentNode = currentNode.left;
       } else {
-        if(currentNode.getRight() == null) {
-          currentNode.setRight(new MyBinaryNode(value));
+        if(currentNode.right == null) {
+          currentNode.right = new MyBinaryNode(value);
           return;
         }
-        currentNode = currentNode.getRight();
+        currentNode = currentNode.right;
       }
     }
   }
@@ -48,10 +48,10 @@ public class MyBinarySearchTree {
     }
     MyBinaryNode currentNode = root;
     while (currentNode != null) {
-      if(value < currentNode.getValue()) {
-        currentNode = currentNode.getLeft();
-      } else if(value > currentNode.getValue()) {
-        currentNode = currentNode.getRight();
+      if(value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if(value > currentNode.value) {
+        currentNode = currentNode.right;
       } else {
         return currentNode;
       }
