@@ -16,7 +16,7 @@ public class TripletSumToZero {
     Arrays.sort(arr); // -3, -2, -1, 0, 1, 1, 2
     List<List<Integer>> triplets = new ArrayList<>();
     for (int i = 0; i < arr.length - 2; i++) {
-      if (arr[i + 1] == arr[i]) {
+      if (i > 0 && arr[i - 1] == arr[i]) {
         continue;
       }
       searchPair(arr, -arr[i], i + 1, triplets);
