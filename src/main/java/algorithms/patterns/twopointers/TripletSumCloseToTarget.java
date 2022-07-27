@@ -8,6 +8,8 @@ public class TripletSumCloseToTarget {
     System.out.println(tripletSum(new int[]{-2, 0, 1, 2}, 2));
     System.out.println(tripletSum(new int[]{-3, -1, 1, 2}, 1));
     System.out.println(tripletSum(new int[]{1, 0, 1, 1}, 100));
+
+    System.out.println(tripletSum(new int[]{-1,2,1,-4}, 1));
   }
 
   static int tripletSum(int[] arr, int targetSum) {
@@ -16,7 +18,7 @@ public class TripletSumCloseToTarget {
     Arrays.sort(arr);
 
     for (int i = 0; i < arr.length - 2; i++) {
-      int closestSumWithCurrentIndex = tripletSum(arr, i, tripletSum, smallestDiff, targetSum);
+      int closestSumWithCurrentIndex = tripletSum(arr,    i, tripletSum, smallestDiff, targetSum);
       int diff = Math.min(Math.abs(closestSumWithCurrentIndex - targetSum),
           Math.abs(targetSum - closestSumWithCurrentIndex));
       if (diff < smallestDiff) {
@@ -39,7 +41,7 @@ public class TripletSumCloseToTarget {
       int diff = Math.abs(targetSum - arr[currentIndex] - arr[left] - arr[right]);
       if (diff <= smallestDiff) {
         smallestDiff = diff;
-        tripletSum = targetSum -smallestDiff;
+        tripletSum = arr[currentIndex] + arr[left] + arr[right];
       } else {
         break;
       }
