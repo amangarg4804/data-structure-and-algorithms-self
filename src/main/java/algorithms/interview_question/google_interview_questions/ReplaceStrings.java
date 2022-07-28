@@ -1,4 +1,4 @@
-package algorithms.interview;
+package algorithms.interview_question.google_interview_questions;
 
 import java.util.Map;
 
