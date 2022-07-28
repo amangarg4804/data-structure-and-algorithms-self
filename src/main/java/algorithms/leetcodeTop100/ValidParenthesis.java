@@ -15,7 +15,7 @@ public class ValidParenthesis {
         return false;
       } else{
         char existing = stack.pop();
-        if(!((existing == '(' && currentChar ==')')
+        if(!((existing == '(' && currentChar ==')') // creating a map would be cleaner
             || (existing == '{' && currentChar =='}')
             || existing == '[' && currentChar ==']')) {
           return false;
