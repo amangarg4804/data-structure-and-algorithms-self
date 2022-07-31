@@ -23,7 +23,7 @@ public class RiverSizes {
 
 
   public static int riverSizes(int[][] matrix, int x, int y, boolean[][] visited) {
-    if (x < 0 || y < 0 || x >= matrix.length || y >= matrix[0].length || visited[x][y]) {
+    if (x < 0 || y < 0 || x >= matrix.length || y >= matrix[x].length || visited[x][y]) {
       return 0;
     }
     if (matrix[x][y] == 0) {
