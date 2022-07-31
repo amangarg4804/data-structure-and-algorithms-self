@@ -1,6 +1,6 @@
 package algorithms.patterns.binarysearch;
 
-//he ceiling of the ‘key’ will be the smallest element in the given array greater than or equal to the ‘key'
+//the ceiling of the ‘key’ will be the smallest element in the given array greater than or equal to the ‘key'
 // Write a function to return the index of the ceiling of the ‘key’. If there isn’t any ceiling return -1.
 public class CeilingOfANumber {
 
