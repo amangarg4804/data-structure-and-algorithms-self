@@ -17,6 +17,7 @@ public class CombinationSum {
       if (target == 0) {
         resultList.add( new ArrayList<>(currentList));
       }
+      return;
     }
     //  accept currentIndex
     if (candidates[currentIndex] <= target) {
