@@ -2,6 +2,8 @@ package algorithms.leetcodeultimatedp;
 
 public class Fobonacci {
     public int fib(int n) {
+//        F(0) = 0, F(1) = 1
+//        F(n) = F(n - 1) + F(n - 2), for n > 1.
         if(n<2) {
             return n;
         }
