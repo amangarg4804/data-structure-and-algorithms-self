@@ -1,6 +1,8 @@
 package algorithms.leetcodetree;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PreOrderTraversal {
@@ -17,5 +19,26 @@ public class PreOrderTraversal {
         result.add(root.val);
         preorderTraversal(root.left, result);
         preorderTraversal(root.right, result);
+    }
+
+    public List<Integer> preorderTraversalIterative(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if(root==null) {
+            return result;
+        }
+
+        Deque<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        while(!stack.isEmpty()) {
+            TreeNode current = stack.pop();
+            result.add(current.val);
+            if(current.right != null) {
+                stack.push(current.right);
+            }
+            if(current.left !=null) {
+                stack.push(current.left);
+            }
+        }
+        return result;
     }
 }
