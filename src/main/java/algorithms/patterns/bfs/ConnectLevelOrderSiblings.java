@@ -39,6 +39,5 @@ public class ConnectLevelOrderSiblings {
         }
       }
     }
-    System.out.println("hello");
   }
 }
