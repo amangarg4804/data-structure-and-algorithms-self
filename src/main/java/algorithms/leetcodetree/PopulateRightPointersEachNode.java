@@ -79,5 +79,32 @@ public class PopulateRightPointersEachNode {
         return root;
     }
 
+    public Node connectIncompleteBinaryTree(Node root) {
+        Node leftMostForThisLevel = root;
+        while(leftMostForThisLevel!=null) {
+            Node current = leftMostForThisLevel;
+            Node dummy = new Node(0);
+            Node dummyref = dummy;
+            while(true) {
+                if(current.left!=null) {
+                    dummy.next=current.left;
+                    dummy = dummy.next;
+                }
+                if(current.right!=null){
+                    dummy.next=current.right;
+                    dummy= dummy.next;
+                }
+                if(current.next==null) {
+                    break;
+                }
+                current = current.next;
+            }
+
+            leftMostForThisLevel = dummyref.next;
+        }
+        return root;
+    }
+
+
 
 }
