@@ -21,6 +21,7 @@ class MyCircularQueue {
         rear = (rear +1) %arr.length;
         arr[rear] = value; // Remember - front and rear will always point to element to be dequeued and element to be enqueued respectively
         // (think of queue.peekFirst and queue.peekLast operation)
+        // front stays at first element and rear keeps moving towards right of the array until queue is full
         return true;
     }
 
