@@ -3,6 +3,7 @@ package algorithms.geekforgeeks.course.array;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.StringJoiner;
 
 public class MajorityElement {
 
@@ -101,6 +102,8 @@ public class MajorityElement {
         if(total > arr.length/2) {
             return String.valueOf(candidate);
         }
+
+
         return "-1";
     }
 
