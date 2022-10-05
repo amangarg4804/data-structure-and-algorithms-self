@@ -6,20 +6,20 @@ import java.util.Stack;
 public class ValidParentheses {
   static HashMap<Character, Character> map = new HashMap<>();
   public static boolean isValidParentheses(String string) {
-    Stack<Character> chars = new Stack<>();
+    Stack<Character> stack = new Stack<>();
     for (int i = 0; i < string.length(); i++) {
       if(!map.containsKey(string.charAt(i))) {
         if("{[(".contains(string.charAt(i) + "")) {
-          chars.add(string.charAt(i));
+          stack.push(string.charAt(i));
         }
       } else {
-        char topElement = chars.empty() ? '#' : chars.pop();
+        char topElement = stack.empty() ? '#' : stack.pop();
         if(!map.get(string.charAt(i)).equals(topElement)) {
           return false;
         }
       }
     }
-    return chars.isEmpty();
+    return stack.isEmpty();
   }
 
   public static void main(String[] args) {
