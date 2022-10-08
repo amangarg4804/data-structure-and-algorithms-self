@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 class MinStack {
+
+    class Node {
+        int val;
+        int min;
+
+        Node(int val, int min) {
+            this.val = val;
+            this.min = min;
+        }
+    }
     List<Node> list = new ArrayList<>();
 
     public MinStack() {
@@ -31,12 +41,4 @@ class MinStack {
     }
 }
 
-class Node {
-    int val;
-    int min;
 
-    Node(int val, int min) {
-        this.val = val;
-        this.min = min;
-    }
-}
