@@ -22,7 +22,7 @@ public class MatrixDistanceToZero {
     }
 
     private static void minDistanceToZero(int i, int j, int[][] mat, int[][] result) {
-        // TLE in extreme case where the arry is of lenghth 1 and it has 10^4 elements and only last element is 0, rest are 1
+        // TLE in extreme case where the array is of length 1 and it has 10^4 elements and only last element is 0, rest are 1
         if(mat[i][j] ==0) {
             return;
         }
