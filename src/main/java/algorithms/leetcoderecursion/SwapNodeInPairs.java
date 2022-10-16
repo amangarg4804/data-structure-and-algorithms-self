@@ -7,13 +7,13 @@ public class SwapNodeInPairs {
             return head;
         }
         ListNode nextHead = head.next.next;
-        ListNode next = head.next; //2
+        ListNode next = head.next;
         next.next= head;
         head.next = swapPairs(nextHead);
         return next;
     }
 
-    public class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 
