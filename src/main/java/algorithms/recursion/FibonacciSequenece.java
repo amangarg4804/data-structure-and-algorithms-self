@@ -14,7 +14,6 @@ public class FibonacciSequenece {
 
         System.out.println(fibonacciDynamicProgramming(3, new HashMap<>()));
         System.out.println(fibonacciDynamicProgramming(10, new HashMap<>()));
-
     }
 
     private static int fibonacci(int n) {
