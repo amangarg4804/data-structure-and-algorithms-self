@@ -7,8 +7,8 @@ public class UniqueBst {
 
   public static void main(String[] args) {
     System.out.println(uniqueTrees(2).size());
-    System.out.println(findUniqueTrees(2));
-    System.out.println(findUniqueTrees(3));
+//    System.out.println(findUniqueTrees(2));
+//    System.out.println(findUniqueTrees(3));
   }
 
   public static List<TreeNode> uniqueTrees(int n) {
@@ -26,7 +26,7 @@ public class UniqueBst {
     }
 
     for(int i=start; i<=end ; i++) {
-      List<TreeNode> leftSubtrees = findUniqueTrees(start, i-1);
+      List<TreeNode> leftSubtrees = findUniqueTrees(start, i-1); // the list won't ever be empty -> line 25 adds null element
       List<TreeNode> rightSubTrees = findUniqueTrees(i+1, end);
       for(TreeNode leftSubTree : leftSubtrees) {
         for(TreeNode rightSubTree : rightSubTrees) {
