@@ -17,7 +17,7 @@ public class Pow {
         if(n==0) {
             return 1;
         }
-        return n%2==0 ? myPowRecursive(x*x, n/2) : x* myPowRecursive(x*x, n/2);  // multiply with x everytime n is odd. 50 -25- 12- 6- 3
+        return n%2==0 ? myPowRecursive(x*x, n/2) : x* myPowRecursive(x*x, n/2);  // 1) x^n == (x*x)^n/2 . multiply with x everytime n is odd. 50 -25- 12- 6- 3
     }
 
     public double myPowIterative(double x, int n) {
