@@ -1,4 +1,4 @@
-package algorithms.leetcoderecurion2;
+package algorithms.leetcoderecursion2;
 
 import java.util.Arrays;
 
