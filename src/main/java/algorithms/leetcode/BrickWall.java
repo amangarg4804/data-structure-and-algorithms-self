@@ -75,7 +75,7 @@ public class BrickWall {
     int noOfCrosses = 0;
 
 
-    // this would be a naive appro  ach..
+    // this would be a naive approach..
     for (int row = 0; row < allRowSums.size(); row++) {
 
       for (int otherRows = 0; otherRows < allRowSums.size(); otherRows++) {

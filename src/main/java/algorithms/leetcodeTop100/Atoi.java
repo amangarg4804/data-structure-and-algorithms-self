@@ -28,7 +28,7 @@ public class Atoi {
     }
     int result = 0;
     while (i < s.length() && Character.isDigit(s.charAt(i))) {
-      int currentInt = s.charAt(i) - '0';
+      int currentInt = s.charAt(i) - '0'; //NOTE: Converting character to integer by subtracting  '0' from it
       if (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10
           && currentInt > Integer.MAX_VALUE % 10)) {
         return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;

@@ -1,11 +1,24 @@
 package algorithms.leetcoderecursion2;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class NQueensII {
 
+     int[] upwardColumn;
+     int[] leftUpDiagnoal;
+     int[] rightupDiagonal;
+     NQueensII(int n) {
+         upwardColumn = new int[n];
+         leftUpDiagnoal = new int[2*n-1];  //NOTE: No of Diagonals in each direction in a nxn matrix are 2n-1;
+         //      3 4 5 6
+         //      2 3 4 5
+         //      1 2 3 4
+         //      0 1 2 3
+         rightupDiagonal = new int[2*n-1];
 
+  //       0 1 2 3
+//         1 2 3 4
+//         2 3 4 5
+//         3 4 5 6
+     }
 
     public int totalNQueens(int n) {
 
@@ -19,20 +32,21 @@ public class NQueensII {
             return count;
         }
         for(int colIndex = 0; colIndex < boardSize; colIndex++) {
-            if(canBePlaced(rowIndex, colIndex, board)) {
-                placeQueen(board, rowIndex, colIndex);
+            if(canBePlaced1(rowIndex, colIndex, board)) {
+                placeQueen1(board, rowIndex, colIndex);
                 if(rowIndex+1 == boardSize) {
                     count++;
                 } else {
                     count = totalNQueens(boardSize, board, count, rowIndex+1);
                 }
-                removeQueen(board, rowIndex, colIndex);
+                removeQueen1(board, rowIndex, colIndex);
             }
         }
         return count;
     }
 
-    private boolean canBePlaced(int rowIndex, int colIndex, int[][] board) {
+
+    private boolean canBePlaced1(int rowIndex, int colIndex, int[][] board) {
         // Because we move down row by row, we need to check only 3 upward directions \|/
         int initRowIndex = rowIndex;
         int initColIndex = colIndex;
@@ -69,101 +83,37 @@ public class NQueensII {
     }
 
 
-    private void placeQueen(int[][] board, int rowIndex, int colIndex) {
+    private void placeQueen1(int[][] board, int rowIndex, int colIndex) {
         board[rowIndex][colIndex] =1;
     }
 
 
-    private void removeQueen(int[][] board, int rowIndex, int colIndex) {
+    private void removeQueen1(int[][] board, int rowIndex, int colIndex) {
         board[rowIndex][colIndex]=0;
     }
 
+    private boolean canBePlaced2(int rowIndex, int colIndex, int[][] board) {
+         return upwardColumn[colIndex] !='Q' && leftUpDiagnoal[rowIndex+colIndex]!='Q'
+                 && rightupDiagonal[board.length-1 + colIndex -rowIndex]!='Q';
+         //Note: Given the rowIndex and col index, right up diagonal value is rowIndex + colIndex.
+        // left up diagonal value is board.length-1 + colIndex -rowIndex
 
-    //n queens, nxn board
-    public List<List<String>> solveNQueens(int n) {
-        List<List<String>> solutions = new ArrayList<>();
-
-        List<String> solution = new ArrayList<>();
-        for(int i=0; i<n;i++) {
-            String s = ".".repeat(n);
-            solution.add(s);
-        }
-        solveNQueens(n, solutions, solution, 0);
-        return solutions;
     }
 
-    private void solveNQueens(int n, List<List<String>> solutions, List<String> solution, int rowIndex) {
+    private void placeQueen2(int[][] board, int rowIndex, int colIndex) {
+        board[rowIndex][colIndex] =1;
+        upwardColumn[colIndex] ='Q';  //NOTE: We are able to assign character value to integer array
+        leftUpDiagnoal[rowIndex+colIndex]='Q';
+        rightupDiagonal[board.length-1 + colIndex -rowIndex]='Q';
 
-        if(rowIndex>=n) {
-            return;
-        }
-        for(int colIndex =0; colIndex <n; colIndex++) {
-            if(canBePlaced(rowIndex, colIndex, solution )) {
-                placeQueen(solution, rowIndex, colIndex);
-                if(rowIndex+1 == n) {
-                    solutions.add( new ArrayList<>(solution));
-
-                } else {
-                    solveNQueens(n, solutions, solution, rowIndex + 1);
-                }
-                removeQueen(solution, rowIndex, colIndex);
-            }
-        }
     }
 
-    private void removeQueen(List<String> solution, int rowIndex, int colIndex) {
-        String s = solution.get(rowIndex);
-        s = s.substring(0, colIndex) + '.' + s.substring(colIndex+1); // Trick to replace/set a character in String at a particular index
-        solution.set(rowIndex, s);
+
+    private void removeQueen2(int[][] board, int rowIndex, int colIndex) {
+        board[rowIndex][colIndex]=0;
+        upwardColumn[colIndex] = 0;
+        leftUpDiagnoal[rowIndex+colIndex]=0;
+        rightupDiagonal[board.length-1 + colIndex -rowIndex]=0;
     }
-
-    private void placeQueen(List<String> solution, int rowIndex, int colIndex) {
-        String s = solution.get(rowIndex);
-        s = s.substring(0, colIndex) + 'Q' + s.substring(colIndex+1);
-        solution.set(rowIndex, s);
-    }
-
-    private boolean canBePlaced(int rowIndex, int colIndex, List<String> solution) {
-        //"...."
-        //"...."
-        //"...."
-        //"...."
-        int originalRowIndex = rowIndex;
-        int originalColIndex = colIndex;
-
-        while (rowIndex>=0 && colIndex>=0) {
-            if(solution.get(rowIndex).charAt(colIndex)=='Q') {
-                return false;
-            }
-            rowIndex--;
-            colIndex--;
-        }
-
-        rowIndex = originalRowIndex;
-        colIndex = originalColIndex;
-        // straight up
-        while(rowIndex >=0) {
-            if(solution.get(rowIndex).charAt(colIndex) == 'Q') {
-                return false;
-            }
-            rowIndex--;
-        }
-        rowIndex = originalRowIndex;
-        colIndex = originalColIndex;
-        // right-up
-        while(rowIndex >=0 && colIndex< solution.size()) {
-            if(solution.get(rowIndex).charAt(colIndex) == 'Q') {
-                return false;
-            }
-            rowIndex--;
-            colIndex++;
-        }
-        return true;
-    }
-
-    public static void main(String[] args) {
-        new NQueensII().solveNQueens(4);
-    }
-
 
 }
