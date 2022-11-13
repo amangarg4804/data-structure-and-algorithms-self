@@ -40,7 +40,7 @@ public class ReverseLevelByLevel {
           queue.offer(currentNode.right);
         }
       }
-      result.add(0, currentLevelList); // we used linkedlist because in arraylist elements would require shifting
+      result.add(0, currentLevelList); // NOTE: Adding element at index 0 for reversing the result. We used linked list because in arraylist elements would require shifting
     }
     return result;
   }

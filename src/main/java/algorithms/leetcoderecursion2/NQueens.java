@@ -44,7 +44,8 @@ public class NQueens {
 
     private void placeQueen(List<String> solution, int rowIndex, int colIndex) {
         String s = solution.get(rowIndex);
-        s = s.substring(0, colIndex) + 'Q' + s.substring(colIndex+1);
+        s = s.substring(0, colIndex) + 'Q' + s.substring(colIndex+1); // NOTE: substring has first index inclusive and 2nd index exclusive
+        // "hamburger".substring(4, 8) returns "urge". substring with only one parameter, i.e, beginIndex, returns the substring starting from beginIndex (inclusive) to end
         solution.set(rowIndex, s);
     }
 

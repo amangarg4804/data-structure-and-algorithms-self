@@ -52,7 +52,7 @@ public class LongestPalindromSubstring {
         right = i+ (len/2);
       }
     }
-    return s.substring(left, right +1);
+    return s.substring(left, right +1); //NOTE: in a substring , first index is inclusive and 2nd index is exclusive. "hamburger".substring(4, 8) returns "urge"
   }
 
   private static int expandFromMiddle(String s, int left, int right) {
