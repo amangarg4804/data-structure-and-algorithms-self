@@ -12,8 +12,7 @@ public class LetterCombinationsOfPhoneNumber {
             '6', "mno",
             '7', "pqrs",
             '8', "tuv",
-            '9', "wxyz");
-
+            '9', "wxyz"); // We could also use an array instead of map String[] keypad = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
         if(digits.length()==0) {
@@ -29,7 +28,7 @@ public class LetterCombinationsOfPhoneNumber {
             return;
         }
 
-        String charactersForDigit = digitToAlpha.get(inputDigits.charAt(digitIndex));
+        String charactersForDigit = digitToAlpha.get(inputDigits.charAt(digitIndex)); // keypad[digits.charAt[i] -'0') in case of using keypad array
         for(int i = 0; i< charactersForDigit.length(); i++) {
             current.append(charactersForDigit.charAt(i));
             backtrack(result, inputDigits, digitIndex+1, current);
