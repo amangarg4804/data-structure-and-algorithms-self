@@ -76,6 +76,7 @@ public class LargestRectangleInHistogram {
         int leftGreaterOrEqual[] = new int[heights.length];
         int rightGreaterOrEqual[] = new int[heights.length];
 
+        // stack will contain next left smaller element than current. Array will contain leftmost greater or equal element
         Deque<Integer> stack = new LinkedList<>();
         for (int i = 0; i < heights.length; i++) {
             while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
