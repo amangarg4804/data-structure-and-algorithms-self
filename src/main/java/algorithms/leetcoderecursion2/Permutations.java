@@ -24,7 +24,8 @@ public class Permutations {
             result.add(new ArrayList<>(currentList));
         }
         for(int i =0; i<nums.length;i++) {
-            if(!set.contains(nums[i])) { // we could skip using set and use currentList.contains (would increase time complexity) or we could also use a boolean array instead of set
+            if(!set.contains(nums[i])) { // we could skip using set and use currentList.contains (would increase time complexity) or
+                // we could also use a boolean array instead of set
                 currentList.add(nums[i]);
                 set.add(nums[i]);
                 backtrack(nums, set, result, currentList);
@@ -56,6 +57,63 @@ public class Permutations {
             result = newResultList;
         }
         return result;
+    }
+
+    public List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> currentList = new ArrayList<>();
+        backtrack2(nums, new HashSet<Integer>(), result, currentList);
+        return result;
+    }
+
+    private void backtrack2(int[] nums, HashSet<Integer> set, List<List<Integer>> result, List<Integer> currentList) {
+        if(currentList.size() == nums.length) {
+            result.add(new ArrayList<>(currentList));
+        }
+        for(int i =0; i<nums.length;i++) {
+            if(!set.contains(i)) { // adding index in set instead of value at index
+                currentList.add(nums[i]);
+                set.add(nums[i]);
+                backtrack2(nums, set, result, currentList);
+                currentList.remove(currentList.size()-1);
+                set.remove(i);
+            }
+        }
+    }
+
+
+    public List<List<Integer>> permute3(int[] nums) {
+        // Wrong
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> currentList = new ArrayList<>();
+        backtrack3(nums, 0, result, currentList);
+        return result;
+    }
+
+    private void backtrack3(int[] nums, int startIndex, List<List<Integer>> result, List<Integer> currentList) {
+        if(currentList.size() == nums.length) {
+            result.add(new ArrayList<>(currentList));
+            return;
+        }
+        for(int i =startIndex; i<nums.length;i++) {
+            currentList.add(nums[i]);
+            backtrack3(nums, startIndex+1, result, currentList);
+//      //****testing for {1, 2, 3}
+//      This is wrong because first  backtrack is called for 1,
+            // For 1, startIndex is 1, 1 has to call backtrack for 2 and 3. In both the cases , it will pass the value of startIndex as 2
+//         1 adds 2 to current and calls backtrack with  startIndex value 2
+//        2 calls backtrack for 3
+//    1,2, 3, gets added to result
+//            1 adds 3 to list and calls backtrack with startIndex 2. current contains 1 and 3 , we reach end of index, we reach line 93 and nothing gets added,
+//            but for loop still runs because startIndex is 2. 3 gets added again!
+//
+//          we add 1,2,3 to list then 3 and 2 gets removed and we call backtrack for ***/
+            currentList.remove(currentList.size()-1);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Permutations().permute3(new int[]{1, 2, 3});
     }
 
 }

@@ -26,14 +26,17 @@ public class GetOrDefaultTest {
 
     Set<Long> getSet1 = map.getOrDefault(1L, new HashSet<>());
     getSet1.add(4L);
+    map.put(1L, getSet1 );
     System.out.println(map);
 
     Set<Long> getSet2 = map.getOrDefault(2L, new HashSet<>());
     getSet2.add(4L);
+    map.put(2L, getSet2 );
     System.out.println(map);
 
     Set<Long> getSet3 = map.getOrDefault(3L, new HashSet<>());
     getSet3.add(1L);
+    map.put(3L, getSet3);
     System.out.println(map);
 
   }
