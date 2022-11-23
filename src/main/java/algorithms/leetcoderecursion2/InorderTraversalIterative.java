@@ -1,8 +1,5 @@
 package algorithms.leetcoderecursion2;
 
-import algorithms.leetcodetree.InorderTraversal;
-import algorithms.leetcodetree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -25,8 +22,26 @@ public class InorderTraversalIterative {
                 TreeNode node = stack.pop();
                 result.add(node.val);
                 if(node.right!=null) {
-                    current = current.right;
+                    current = node.right;
                 }
+            }
+        }
+        return result;
+    }
+
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode current = root;
+        while (current != null || !stack.isEmpty()) { //not using while (true)
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null) {
+                current = node.right;
             }
         }
         return result;
