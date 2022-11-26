@@ -1,6 +1,4 @@
-package algorithms.bst;
-
-import com.sun.source.tree.Tree;
+package algorithms.leetcodebst;
 
 import java.util.Deque;
 import java.util.LinkedList;

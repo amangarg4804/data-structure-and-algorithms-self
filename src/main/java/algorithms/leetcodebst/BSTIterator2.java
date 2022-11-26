@@ -1,4 +1,4 @@
-package algorithms.bst;
+package algorithms.leetcodebst;
 
 import java.util.Stack;
 
