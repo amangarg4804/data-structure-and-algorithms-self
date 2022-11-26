@@ -29,8 +29,25 @@ public class InorderSuccessor {
         }
         return null;
     }
+    public TreeNode inorderSuccessor2(TreeNode root, TreeNode x) {
+        TreeNode successor = null;
+        TreeNode current = root;
+        while (current !=null) {
+            if(x.val >= current.val) {
+                // if x is greater or equal to current, we are sure that successor will be on the right side of current
+                current = current.right;
+            } else {
+                // if x is less than current. Either current could be successor. We would still find a closer element on the left side of current
+                successor = current;
+                current = current.left;
+            }
+        }
+        return successor;
+    }
+
 
     public TreeNode inorderSuccessorRecursive(TreeNode root, TreeNode x) {
+        // Time Complexity O(h)
         if(root ==null) {
             return null;
         }
