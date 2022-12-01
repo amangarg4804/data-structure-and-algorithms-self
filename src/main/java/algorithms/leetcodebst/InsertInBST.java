@@ -89,21 +89,9 @@ public class InsertInBST {
         if(val > root.val) {
             root.right = insertIntoBST4Recursive(root.right, val);
         } else {
-            root.left = insertIntoBST4Recursive(root.left, val);
+            root.left = insertIntoBST4Recursive(root.left, val);//  NOTE: the recursion pattern bottom up
         }
         return root;
     }
 
-    public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
 }

@@ -3,6 +3,7 @@ package algorithms.leetcodebst;
 import java.util.Deque;
 import java.util.LinkedList;
 
+// Assumption: Given tree is a binary tree
 public class ValidateBst {
 
 
@@ -53,22 +54,4 @@ public class ValidateBst {
         return true;
     }
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 }
