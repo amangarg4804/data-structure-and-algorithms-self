@@ -14,6 +14,7 @@ public class KthLargest {
 
     }
     // stream can contain duplicate elements
+    // It's not exactly a BST
     private TreeNode insert(int num, TreeNode root) {
         if(root ==null) {
             return new TreeNode(num);

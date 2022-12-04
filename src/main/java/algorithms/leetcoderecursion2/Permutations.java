@@ -104,7 +104,7 @@ public class Permutations {
 //         1 adds 2 to current and calls backtrack with  startIndex value 2
 //        2 calls backtrack for 3
 //    1,2, 3, gets added to result
-//            1 adds 3 to list and calls backtrack with startIndex 2. current contains 1 and 3 , we reach end of index, we reach line 93 and nothing gets added,
+//            1 adds 3 to list and calls backtrack with startIndex 2. current contains 1 and 3 , we reach end of index, we reach line 94 and nothing gets added,
 //            but for loop still runs because startIndex is 2. 3 gets added again!
 //
 //          we add 1,2,3 to list then 3 and 2 gets removed and we call backtrack for ***/
