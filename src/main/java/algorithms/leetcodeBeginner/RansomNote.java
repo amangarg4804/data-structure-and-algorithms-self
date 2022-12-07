@@ -15,7 +15,7 @@ public class RansomNote {
         }
 
         for(int i=0; i< ransomNote.length() ;i++) {
-            if(!map.containsKey(ransomNote.charAt(i)) || map.get(ransomNote.charAt(i))==0) { // could avoid first check when
+            if(!map.containsKey(ransomNote.charAt(i)) || map.get(ransomNote.charAt(i))==0) { // could avoid first check.
                 return false;
             }
             map.put(ransomNote.charAt(i), map.get(ransomNote.charAt(i))-1);
