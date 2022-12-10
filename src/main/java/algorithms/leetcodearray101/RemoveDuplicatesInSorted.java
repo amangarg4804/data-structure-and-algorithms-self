@@ -12,4 +12,15 @@ public class RemoveDuplicatesInSorted {
         }
         return nonDuplicateIndex+1;
     }
+
+    public int removeDuplicates1(int[] nums) {
+        int nextAvailableIndex =1;
+        for(int i=1; i< nums.length;i++) {
+            if(nums[i] !=nums[i-1]) {
+                nums[nextAvailableIndex] =nums[i];
+                nextAvailableIndex++;
+            }
+        }
+        return nextAvailableIndex;
+    }
 }
