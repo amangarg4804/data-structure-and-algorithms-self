@@ -63,4 +63,22 @@ public class MoveZeros {
 
     }
 
+    public static void moveZeroesInPlace2(int[] nums) {
+        // This approach minimizes no of swaps. We only swap when non-zero number and there were zeros to the left
+        int snowballSize = 0;
+        for(int i = 0; i< nums.length; i++) {
+            if(nums[i] == 0) {
+                snowballSize++;
+            } else if(snowballSize>0) {
+                //swap the leftmost zero with the no zero element. All zeros move to the right of element after swap. zeros roll all the time
+                nums[i-snowballSize] = nums[i]; // i-snowballSize is to the left
+                nums[i] = 0;
+            }
+        }
+
+
+    }
+
+
+
 }

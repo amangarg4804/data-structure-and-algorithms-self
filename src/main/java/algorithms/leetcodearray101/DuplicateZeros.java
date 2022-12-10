@@ -37,7 +37,7 @@ public class DuplicateZeros {
                 if(dupZeroIndex < arr.length) {  // take the example of array {0, 1}, dupZeroIndex is at 1 when origIndex is at 0
                     arr[dupZeroIndex] =0;
                 }
-                dupZeroIndex--;
+                dupZeroIndex--; // decrease dupZeroIndex in any case
                 if(dupZeroIndex <arr.length) {
                     arr[dupZeroIndex] =0;
                 }
