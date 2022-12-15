@@ -1,7 +1,6 @@
 package util;
 
 import com.github.rholder.retry.*;
-import com.google.common.base.Predicates;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
