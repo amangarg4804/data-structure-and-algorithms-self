@@ -10,7 +10,7 @@ public class NQueens {
 
         List<String> solution = new ArrayList<>();
         for(int i=0; i<n;i++) {
-            String s = ".".repeat(n);
+            String s = ".".repeat(n); // NOTE: repeat a character n times to form a string
             solution.add(s);
         }
         solveNQueens(n, solutions, solution, 0);
@@ -25,7 +25,7 @@ public class NQueens {
         for(int colIndex =0; colIndex <n; colIndex++) {
             if(canBePlaced(rowIndex, colIndex, solution )) {
                 placeQueen(solution, rowIndex, colIndex);
-                if(rowIndex+1 == n) {
+                if(rowIndex+1 == n) { // we reached last row
                     solutions.add( new ArrayList<>(solution));
 
                 } else {

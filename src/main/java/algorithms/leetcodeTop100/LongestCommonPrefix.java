@@ -16,8 +16,8 @@ public class LongestCommonPrefix {
     }
     String prefix = strs[0];
     for(int i=1; i< strs.length; i++) {
-      while(strs[i].indexOf(prefix) != 0) {
-        prefix = prefix.substring(0, prefix.length()-1);
+      while(strs[i].indexOf(prefix) != 0) { // NOTE: find operation on String. Checking whether prefix is at the beginning of String
+        prefix = prefix.substring(0, prefix.length()-1); // NOTE: removing last character from a String
       }
     }
     return prefix;

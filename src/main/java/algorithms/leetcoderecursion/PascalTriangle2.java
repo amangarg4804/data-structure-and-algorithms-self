@@ -88,7 +88,7 @@ class PascalTriangle2Iterative {
     }
 }
 
-class PascalTriangleDp {
+class PascalTriangle2Dp {
     public List<Integer> getRow(int rowIndex) {
         List<Integer> row =
                 new ArrayList<>(rowIndex + 1);
