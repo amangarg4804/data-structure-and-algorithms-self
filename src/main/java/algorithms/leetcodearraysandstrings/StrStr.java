@@ -3,7 +3,7 @@ package algorithms.leetcodearraysandstrings;
 public class StrStr {
 
     public int strStr(String haystack, String needle) {
-        // time O(M*N) -> substring will take N
+        // time O(M*N) -> NOTE: substring complexity is O(n) from Java 7 onwards, before Java 7 it was O(1) because it used same char[] array just with a different offset. It was changed to fix a memory leak
         if(needle.length() > haystack.length()) {
             return -1;
         }

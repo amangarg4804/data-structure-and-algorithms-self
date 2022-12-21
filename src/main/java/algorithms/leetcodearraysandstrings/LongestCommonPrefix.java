@@ -16,6 +16,7 @@ public class LongestCommonPrefix {
     public String longestCommonPrefix1(String[] strs) {
         // time: O(nLogn)
         Arrays.sort(strs); // to get first and last element we could also use compareTo instead of sorting the array. But compareTo complexity is O(n) which would result in O(n^2) solution
+                            // NOTE: compareTo time complexity is equal to O(n), n being the length of smaller string
         String first = strs[0];
         String last = strs[strs.length-1];
         // we only need to compare first and last String after sorting. If first String is starts with "b"  and last string also starts with "b".
