@@ -67,4 +67,27 @@ public class PascalTriangle {
         }
         return result;
     }
+
+    public List<List<Integer>> generate3(int numRows) {
+        // Above approach always added 1 to the start of list which is O(n) as it requires shifting the elements
+        // What we can do is to iterate from end of list and add previous element to each index except 0 index
+        // E.g.
+        //       1
+        //      1  1
+        //     1  2  1
+        // add previous element to end element it becomes 1 2 3,  add previous element to 2 -> 1, 3, 3
+        //
+        // Now add 1 to the end of list which is O(1)
+        // 1 3 3 1 -> this is the resulting row
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> row = new ArrayList<>();
+        for(int i = 0; i< numRows; i++) {
+            for(int j=row.size()-1; j>0; j--) {
+                row.set(j, row.get(j) + row.get(j-1));
+            }
+            row.add(1);
+            result.add(new ArrayList<>(row));
+        }
+        return result;
+    }
 }

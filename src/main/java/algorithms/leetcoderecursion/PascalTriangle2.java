@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PascalTriangle2 {
-
+    // TLE
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();
         for(int j=0; j<= rowIndex; j++) {
@@ -26,7 +26,7 @@ public class PascalTriangle2 {
 }
 
 class PascalTriangle2Memoization {
-
+    // TLE
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();
         result.add(1);
@@ -90,8 +90,7 @@ class PascalTriangle2Iterative {
 
 class PascalTriangle2Dp {
     public List<Integer> getRow(int rowIndex) {
-        List<Integer> row =
-                new ArrayList<>(rowIndex + 1);
+        List<Integer> row = new ArrayList<>(rowIndex + 1);
         row.add(1);
 
         for (int i = 0; i < rowIndex; i++) {
