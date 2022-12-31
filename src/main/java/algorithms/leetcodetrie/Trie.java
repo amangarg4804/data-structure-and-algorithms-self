@@ -30,6 +30,20 @@ public class Trie {
         return current.isWord;
     }
 
+    public boolean search1(String word) {
+        return searchRecursive(root, word, 0);
+    }
+
+    private boolean searchRecursive(TrieNode current, String word, int index) {
+        if(index == word.length()) {
+            return current.isWord;
+        }
+        if(current.children[index] ==null) {
+            return false;
+        }
+        return searchRecursive(current.children[index], word, index+1);
+    }
+
     public boolean startsWith(String prefix) {
         TrieNode current = root;
         for(int i=0; i< prefix.length(); i++) {

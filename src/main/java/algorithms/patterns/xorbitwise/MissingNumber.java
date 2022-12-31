@@ -1,6 +1,18 @@
 package algorithms.patterns.xorbitwise;
 
 // Given an array of n-1 integers in the range from 1 to n, find the one number that is missing from the array.
+
+
+// NOTE:
+// Taking XOR of a number with itself returns 0, e.g.
+//1 ^ 1 = 0
+//29 ^ 29 = 0
+//Taking XOR of a number with 0 returns the same number, e.g.,
+//1 ^ 0 = 1
+//31 ^ 0 = 31
+//XOR is Associative & Commutative, which means:
+//(a ^ b) ^ c = a ^ (b ^ c)
+//a ^ b = b ^ a
 public class MissingNumber {
 
   public static void main(String[] args) {
