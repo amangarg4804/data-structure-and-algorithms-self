@@ -23,6 +23,7 @@ public class PalindromeLinkedList {
         }
        reverse(headSecondHalf); // We don't need the returned value of reverse function here. Previous node of middle is still pointing to correct node, it was never modified in this program
         return isPalindrome;
+        // another solution could be to push all nodes in stack. This one is with O(1) space
     }
 
 

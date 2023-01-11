@@ -31,7 +31,7 @@ public class DailyTemperatures {
         int[] answer = new int[temperatures.length];
         Deque<Integer> stack = new LinkedList<>();
         for (int i=temperatures.length-1; i>=0; i--) {
-            while(!stack.isEmpty() && temperatures[i] >= temperatures[stack.peekFirst()]) { //Deque peekFirst is top of the stack
+            while(!stack.isEmpty() && temperatures[i] >= temperatures[stack.peekFirst()]) { //NOTE: Deque peekFirst is top of the stack
                 stack.pop();
             }
             if(!stack.isEmpty() && temperatures[stack.peekFirst()] > temperatures[i]) {
