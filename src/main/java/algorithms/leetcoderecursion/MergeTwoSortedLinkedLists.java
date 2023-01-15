@@ -52,16 +52,17 @@ public class MergeTwoSortedLinkedLists {
             }
             current = current.next;
         }
-        while (list1 != null) {
-            current.next = list1;
-            list1 = list1.next;
-            current = current.next;
-        }
-        while (list2 != null) {
-            current.next = list2;
-            list2 = list2.next;
-            current = current.next;
-        }
+        current.next = list1 ==null ? list2: list1;
+//        while (list1 != null) {
+//            current.next = list1;
+//            list1 = list1.next;
+//            current = current.next;
+//        }
+//        while (list2 != null) {
+//            current.next = list2;
+//            list2 = list2.next;
+//            current = current.next;
+//        }
         return dummyHead.next;
     }
 
