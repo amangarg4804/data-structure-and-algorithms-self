@@ -63,7 +63,7 @@ public class BallCollision {
                         toAdd =false;
                         break;
                     } else if(strength[lastIndex] <strength[i]) {
-                        result.remove(lastIndex);
+                        result.remove(lastIndex); //Note : calling list.remove(1) will remove the element at index 1, calling list.remove(Integer.valueOf(1)) will remove the element with value 1
                     } else {
                         result.remove(lastIndex);
                         toAdd = false;
