@@ -1,6 +1,6 @@
 package algorithms.oracleinterview;
 
-public class Problem1 {
+public class PalindromeStrings {
 
   public static void main(String[] args) {
     // An array of string, which of them are palindrome

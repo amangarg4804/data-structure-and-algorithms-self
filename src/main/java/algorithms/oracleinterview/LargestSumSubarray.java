@@ -1,6 +1,6 @@
 package algorithms.oracleinterview;
 
-public class Problem4 {
+public class LargestSumSubarray {
   //Write an efficient program to find the sum of contiguous subarray within a one-dimensional array of numbers that has the largest sum.
   // {-2 -3 4 -1 -2 1 5 -3}Maximum Contiguous Array Sum {4, -1, -2, 1, -2, 1, 5 } => 7
 

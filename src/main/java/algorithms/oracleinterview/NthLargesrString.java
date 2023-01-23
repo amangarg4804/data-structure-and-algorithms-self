@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class Problem2 {
+public class NthLargesrString {
 
   /// nth largest string from an array of non-null strings
   public static void main(String[] args) {

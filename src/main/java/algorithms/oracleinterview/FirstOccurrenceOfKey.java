@@ -1,6 +1,6 @@
 package algorithms.oracleinterview;
 
-public class Problem3 {
+public class FirstOccurrenceOfKey {
 // Write a method that takes a sorted array and a key and returns the index of first occurrence of that key in the array
 
 //-14 -10 2 108 108 243 285 285 285 401
