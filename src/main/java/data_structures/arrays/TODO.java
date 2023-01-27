@@ -4,7 +4,6 @@ public class TODO {
 
 //    calendar block
 //    travelling salesman
-//    sudoku
 //            knapsack
 //    Coin change problem
     // tic tac toe - ixigo
