@@ -41,7 +41,7 @@ public class HappyNumber {
     do {
       slow = sumOfSquares(slow);
       fast = sumOfSquares(sumOfSquares(fast));
-    } while (slow != fast);
+    } while (slow != fast); // for all numbers, slow will always reach fast. Either it will be 1 or some other value
 
     return slow == 1;
   }
