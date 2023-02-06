@@ -33,6 +33,7 @@ public class AddBinary {
 
     public String addBinary1(String a, String b) {
         // without using map
+        // Only 3 possibilities for sum 1,2,3- we can use sum%2,
         int aIndex = a.length()-1;
         int bIndex = b.length()-1;
         int carry = 0; // carry could be 1 and a and b could be 1, so max is 1 + 1 + 1 = 3 = 11 in binary
