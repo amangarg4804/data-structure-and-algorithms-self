@@ -5,6 +5,7 @@ import java.util.List;
 
 public class PalindromeFromSubstring {
     public List<Boolean> canMakePaliQueries(String s, int[][] queries) {
+        // a palindrome can be formed by rearranging letters of a String if frequency of maximum characters with odd frequency is 1
         List<Boolean> result = new ArrayList<>();
         for(int i=0; i< queries.length; i++) {
             String input = s.substring(queries[i][0], queries[i][1] +1);
@@ -38,7 +39,7 @@ public class PalindromeFromSubstring {
         // so an array item at  index i contains frequency of each character from 0 index to i index
         // if we need to find frequency of characters between 2 indexes i, j, We can easily subtract frequency at i-1 from frequency at j
 
-        // example: to find frequency of 'a' between 1 to 3 index we can do arr[3]['a' -'a'] -arr[0, 'a' -'a'] = 1
+        // example: to find frequency of 'a' between 1st and 3rd index we can do arr[3]['a' -'a'] -arr[0, 'a' -'a'] = 1
         int[][] freq = new int[s.length()][26];
         for(int i =0; i< s.length(); i++) {
             if(i==0) {
