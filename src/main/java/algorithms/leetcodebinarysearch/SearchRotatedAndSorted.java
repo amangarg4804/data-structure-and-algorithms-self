@@ -19,9 +19,8 @@ public class SearchRotatedAndSorted {
                 }
             } else   */ //This block is not required
 
-            if (nums[right] > nums[mid]) { // nums array is has distinct values
+            if (nums[right] > nums[mid]) { // nums array has distinct values
 
-                // nums[left] > nums[mid]
                 // right part is sorted in ascending
                 if (target > nums[mid] && target <= nums[right]) { // [4,5,6,7,0,1,2]
                     left = mid + 1;

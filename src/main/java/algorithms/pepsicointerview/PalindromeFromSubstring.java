@@ -3,6 +3,7 @@ package algorithms.pepsicointerview;
 import java.util.ArrayList;
 import java.util.List;
 
+// https://leetcode.com/problems/can-make-palindrome-from-substring/
 public class PalindromeFromSubstring {
     public List<Boolean> canMakePaliQueries(String s, int[][] queries) {
         // a palindrome can be formed by rearranging letters of a String if frequency of maximum characters with odd frequency is 1
