@@ -92,17 +92,24 @@ public class FindPeakElement {
         // mid is 10,  move start to 15, i.e, 2nd index
         // either 15 will be peak, or 15 may have greater integer to the right to it, let's say 20, in that case 20 will be peak
         // in any case, if the mid+1 is greater than mid, there will exist a peak on right. So, we can move the left pointer to mid +1
-        // same for when mid -1 is greater than mid
+        if(nums.length==1) {
+            return 0;
+        }
         int start = 0;
         int end = nums.length - 1;
-        while (start < end) { // run the loop only when start < end. Start is not equal to end so array should have atleast 2 elements
+        while (start +1 < end) { // run loop only when at least 3 elements
             int mid = start + (end - start) / 2;
-            if (nums[end] > nums[mid]) { // Think of an example with only two integers. mid will always be 0th element because of above condition. [1, 2]
+            if (nums[mid] < nums[mid+1]) { // won't work if we check nums[mid] > nums[mid+1] and set start = mid. Example: [1,2,3,1] because we can't be sure there will be a greater element on the left of mid
                 start = mid+1 ;
-            } else { // Note that this condition has to be in else block .We can't have an if condition with nums[start] < mid
+            } else {
                 end = mid;
             }
         }
-        return start;
+        // after loop ends, only two integers
+        if(start == nums.length-1 || nums[start] > nums[start+1]) {
+            return start;
+        }
+        return end;
+        //2 integers: 1, 2 or 2, 1
     }
 }
