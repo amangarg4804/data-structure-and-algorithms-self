@@ -16,6 +16,10 @@ public class SquareRoot {
                 return mid;
             }
             if(square< x) {
+//                Input: x = 8
+//                Output: 2
+//                Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+                // Smaller integer should be returned as per problem statement
                 ans = mid;
                 left = mid+1;
             } else {
