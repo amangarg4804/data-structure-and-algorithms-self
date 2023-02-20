@@ -18,7 +18,7 @@ public class MergeSortedArrayInPlace {
 
         while (arr1Index >=0) {
             nums1[resultIndex--] = nums1[arr1Index--];  // This loop is not required, if arr2Index has reached 0 and arr1Index is still greater than 0, while running this loop,
-            // we will be simply assigning same values to array elements
+            // we will be simply assigning same values to array elements which is unnecessary
         }
         while (arr2Index >=0) {
             nums1[resultIndex--] = nums2[arr2Index--];

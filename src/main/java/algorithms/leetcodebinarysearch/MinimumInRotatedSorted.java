@@ -11,7 +11,8 @@ public class MinimumInRotatedSorted {
         int end = nums.length-1;
         while (start < end) { // run through the example where array as only 2 integers {25, 20} and {20, 25}
             int mid = start + (end-start)/2;
-            if(nums[end] > nums[mid]) { // always search on right side in case of binary search problems because in case of array with 2 items. 0th index is mid
+            if(nums[end] > nums[mid]) { // if end is greater than mid, all the elements to the right of mid are going to be greater than mid
+                // always search on right side in case of binary search problems because in case of array with 2 items. 0th index is mid
                 // right side is sorted
                 end = mid;
             } else {

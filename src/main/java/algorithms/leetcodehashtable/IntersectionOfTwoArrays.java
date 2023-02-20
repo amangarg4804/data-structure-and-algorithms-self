@@ -40,7 +40,7 @@ public class IntersectionOfTwoArrays {
     }
 
     // 3rd solution : sort one of the arrays. Iterate over the other array and do a binary search on the sorted one
-    //4th solution: sort both arrays. keep two pointers pointing to arr1 index. and arr2 index.Move the pointers based of which array's current index value is greater. If same add to result
+    //4th solution: sort both arrays. keep two pointers pointing to arr1 index. and arr2 index.Move the pointers based on which array's current index value is greater. If same, add to result
 
 
 }

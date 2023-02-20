@@ -20,7 +20,7 @@ public class StartOfLinkedListCycle {
 
   private static ListNode findCycleStart(ListNode head) {
     ListNode slow = head;
-    ListNode fast = head;
+    ListNode fast = head; 
 
     int cycleLength = 0;
     while (fast != null && fast.next != null) {

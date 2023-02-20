@@ -27,7 +27,7 @@ public class SearchRotatedAndSorted {
                 } else {
                     right = mid - 1;
                 }
-            } else {  // This condition must come last because our mid is lower value, in case of even number of integers in array. Otherwise we won't get correct result for array {3,1}
+            } else {  // This condition must come last because our mid is lower value in case of even number of integers in array. Otherwise we won't get correct result for array {3,1}
                 // left part is sorted in ascending order
                 // [4,5,6,7,0,1,2], assume mid is integer 6
                 if (target >= nums[left] && target < nums[mid]) {
