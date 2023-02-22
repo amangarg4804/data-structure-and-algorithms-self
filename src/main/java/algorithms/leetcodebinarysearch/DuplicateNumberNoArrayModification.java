@@ -12,7 +12,7 @@ public class DuplicateNumberNoArrayModification {
     public int findDuplicate1(int[] nums) {
         // using extra space
         Set<Integer> set = new HashSet<>();
-        for(int i: nums) {
+        for(int i: nums) {  
             if(!set.add(i)) {
                 return i;
             }
