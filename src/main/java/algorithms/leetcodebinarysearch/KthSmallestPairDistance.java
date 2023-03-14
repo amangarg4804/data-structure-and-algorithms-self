@@ -44,6 +44,7 @@ public class KthSmallestPairDistance {
         // memory limit exceeded
     }
 
+    // binary search on answer
     public int smallestDistancePair3(int[] nums, int k) {
         // 2, 5, 8, 10, 12, 14
         // no of pairs with difference less than or equal to 5
@@ -72,6 +73,12 @@ public class KthSmallestPairDistance {
             // Pairs are {1,1},{1,1}, {1,1}, differences are 0, 0, 0. So for k=2, kth smallest difference is 0
 
             if(countOfPairs(nums, midDiff) < k ) {
+                // imagine there is a sorted array d consists of all the diffs from items in nums. The size of this array will be n(n-1)/2,
+                // and we want to find d[k] in this problem.
+                //The condition used in the binary search is if(countPairs(a,mid)<k), it doesn't return mid when countParis(a, mid)==k.
+                // Because if there is a gap between d[k] and d[k+1], then every number in [d[k], d[k+1]) would satisfy that condition, but we only want d[k].
+                // So as long countPairs(a,mid)<k we increase low and we decrease high otherwise (including the case countPairs(a,mid)==k).
+                // By searching in this way. We get the first number that doesn't satisfy countPairs(a,mid)<k, which is d[k]
                 smallestDiff = midDiff+1;
             } else {
                 // count of pairs is greater than or equal to k, meaning this difference can also be the answer

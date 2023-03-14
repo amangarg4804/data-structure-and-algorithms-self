@@ -51,7 +51,7 @@ public class FindPeakElement {
         }
         return -1;
     }
-
+    // binary search on answer
     public int findPeakElement3(int[] nums) {
         // using binary search Log(n)
         // 5, 10, 15
