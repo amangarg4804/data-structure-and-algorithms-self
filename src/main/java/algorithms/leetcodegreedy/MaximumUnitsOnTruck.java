@@ -61,7 +61,7 @@ public class MaximumUnitsOnTruck {
     }
 
     public int maximumUnits3(int[][] boxTypes, int truckSize) { // truck size is maximum no of boxes
-        // instead of using Arrays.sort, we can also use bucket sort because:
+        // instead of using Arrays.sort, we can also use counting sort because:
         //1 <= boxTypes.length <= 1000
         // 1 <= numberOfBoxesi, numberOfUnitsPerBoxi <= 1000
         // array index will represent no of units in a box, value will represent no of boxes
