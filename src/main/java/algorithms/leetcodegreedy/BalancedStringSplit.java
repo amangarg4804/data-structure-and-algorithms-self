@@ -21,7 +21,7 @@ public class BalancedStringSplit {
             int lCount =0;
             for(int i=0; i< s.length(); i++) {
                 if(s.charAt(i) =='R') {
-                    rCount++;
+                    rCount++;   
                 } else {
                     lCount++;
                 }
