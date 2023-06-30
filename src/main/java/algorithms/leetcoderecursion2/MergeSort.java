@@ -14,7 +14,7 @@ public class MergeSort {
             return input;
         }
         int mid = input.length/2;
-        int[] part1 = merge_sort(Arrays.copyOfRange(input, 0, mid)); // "to" index is exclusive and can lie outside the array range
+        int[] part1 = merge_sort(Arrays.copyOfRange(input, 0, mid)); // NOTE: "to" index is exclusive and can lie outside the array range
         int[] part2 = merge_sort(Arrays.copyOfRange(input, mid, input.length));
         return merge(part1, part2);
     }
