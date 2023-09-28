@@ -15,7 +15,7 @@ public class LruCache {
 
   void put(int key, String val) {
     if (queue.size() >= capacity) {
-      int keyRemoved = queue.removeLast();
+      int keyRemoved = queue.removeLast(); // This looks wrong, if key already existed in map, there should be no need to remove last cache entry. In this case, cache should not remove any entry, simply update the existing entry
       map.remove(keyRemoved);
     }
     queue.addFirst(key);
