@@ -3,41 +3,42 @@ package algorithms.leetcodestackandqueues;
 import java.util.ArrayList;
 import java.util.List;
 
+//Methods pop, top and getMin operations will always be called on non-empty stacks.
+// bp
 class MinStack {
-
-    class Node {
-        int val;
-        int min;
-
-        Node(int val, int min) {
-            this.val = val;
-            this.min = min;
-        }
-    }
-    List<Node> list = new ArrayList<>();
-
+    List<Node> nodes;
     public MinStack() {
-
+        nodes = new ArrayList<>();
     }
 
     public void push(int val) {
-        if(list.size() !=0) {
-            list.add(new Node(val, Math.min(getMin(), val)));
-        } else {
-            list.add(new Node(val, val));
+        if(nodes.isEmpty()) {
+            nodes.add(new Node(val, val));
+            return;
         }
+        nodes.add(new Node(Math.min(val, getMin()), val));
     }
 
     public void pop() {
-        list.remove(list.size()-1);
+        nodes.remove(nodes.size() -1);
     }
 
     public int top() {
-        return list.get(list.size()-1).val;
+        return nodes.get(nodes.size() -1).val;
     }
 
     public int getMin() {
-        return list.get(list.size()-1).min;
+       return nodes.get(nodes.size() -1).min;
+    }
+
+    private static class Node {
+        int min;
+        int val;
+
+        public Node(int min, int val) {
+            this.min = min;
+            this.val = val;
+        }
     }
 }
 

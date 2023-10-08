@@ -47,7 +47,7 @@ public class MergeSort {
         int rightIndex = 0;
         for(int i =0; i< mergedArr.length; i++) {
             if(leftIndex <leftArr.length && rightIndex < rightArr.length) {
-                if(leftArr[leftIndex] < rightArr[rightIndex]) {
+                    if(leftArr[leftIndex] < rightArr[rightIndex]) {
                     mergedArr[i] = leftArr[leftIndex];
                     leftIndex++;
                 } else {
