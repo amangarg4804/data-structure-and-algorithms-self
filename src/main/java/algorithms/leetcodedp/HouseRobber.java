@@ -52,7 +52,10 @@ public class HouseRobber {
         int result = Math.max(robMemoize(nums, n-2) + nums[n], robMemoize(nums, n-1));
         map.put(n, result);
         return result;
-        // Time complexity: for every value of n, rob calculation is done exactly once, so time complexity is O(n)
+        //Time Complexity: O(N) since we process at most N recursive calls, thanks to caching, and during each of these calls,
+        // we make an O(1)computation which is simply making two other recursive calls, finding their maximum, and populating the cache based on that.
+        //
+        //Space Complexity: O(N) which is occupied by the cache and also by the recursion stack.
     }
 
     public int robIterative(int[] nums) {
