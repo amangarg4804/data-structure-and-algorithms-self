@@ -14,6 +14,7 @@ public class MaxSubArrayKadaneAlgorithmMemoization {
         System.out.print(maxSubArrayBruteForce(new int [] {9, -3, 7, 5, -2}));
     }
 
+
     public static int maxSubArray(int[] A) {
         int maxSoFar=A[0], maxEndingHere=A[0];
         for (int i=1;i<A.length;++i){
@@ -21,6 +22,20 @@ public class MaxSubArrayKadaneAlgorithmMemoization {
             maxSoFar=Math.max(maxSoFar, maxEndingHere);
         }
         return maxSoFar;
+    }
+    public static int maxSubArray2(int[] nums) {
+        int max =Integer.MIN_VALUE;
+        int currentSum =0;
+
+        for(int i = 0; i< nums.length; i++) {
+            currentSum += nums[i];
+            max= Math.max(currentSum, max);
+            if(currentSum <0) {
+                currentSum = 0;
+            }
+        }
+
+        return max;
     }
 
     public static int maxSubArrayBruteForce(int[] arr) {

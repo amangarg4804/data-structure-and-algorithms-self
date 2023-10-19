@@ -117,30 +117,4 @@ public class LargestCommonSubsequence {
         return dp[0][0];
     }
 
-    public int longestCommonSubsequence3(String text1, String text2) {
-        //bottom up space optimizaton
-        // if we see the recursion tree above, the deepest value is when either of the indices is greater than
-        // calculations is done for greatest indexes first text1.length -1 ,text1.length -2 and so on
-        //Observe that the subproblems have a natural "size" ordering; the largest subproblem is the one we start with, and the smallest subproblems are the ones with just one letter left in each word.
-        // The answer for each subproblem depends on the answers to some of the smaller subproblems.
-        int[][] dp = new int[text1.length()+1][text2.length()+1]; // all values are 0 by default
-        // abc
-        // bac
-        //dp[2][2] = 1
-        // dp[2][1] =Math.max(dp[3][1], dp[2][2])= dp[2][2] =1
-        // dp[1][2] = 1
-        // dp[1][1] = 1
-        // dp[0][2]= 1+ dp[1][2] = 1+ 1 =2
-        //dp[0][
-        for(int i =text1.length()-1; i>=0; i--) {
-            for(int j=text2.length()-1; j>=0; j--) {
-                if(text1.charAt(i) ==text2.charAt(j)) {
-                    dp[i][j] = 1+ dp[i+1][j+1];
-                } else {
-                    dp[i][j] = Math.max(dp[i+1][j], dp[i][j+1]);
-                }
-            }
-        }
-        return dp[0][0];
-    }
 }
