@@ -69,7 +69,6 @@ public class RollTheString {
     public static void main(String[] args) {
         char ch = 'z'; // Initialize character 'z'
         int roll = 5; // Number of rolls
-
         // Calculate the rolled character
         ch = (char) ('a' + (ch - 'a' + roll) % 26);
          char ch1='z';
