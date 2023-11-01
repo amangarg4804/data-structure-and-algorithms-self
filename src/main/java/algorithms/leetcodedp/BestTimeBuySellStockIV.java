@@ -102,4 +102,48 @@ public class BestTimeBuySellStockIV {
         }
         return dp[0][k][0]; // k transactions remaining
     }
+
+    public int maxProfit3(int k, int[] prices) {
+        //bottom up dp
+        int[][][] dp = new int[prices.length +1][k +1][2];
+        for(int i=prices.length-1; i >=0; i--) {
+            for( int trasactionsRemaining =k-1; trasactionsRemaining >=0; trasactionsRemaining--) { // notice k-1 because of 0 based index
+                for(int holding =0; holding < 2; holding ++) {
+                    int dontDoAnything = dp[i+1][trasactionsRemaining][holding];
+                    int buyOrSell;
+                    if(holding ==0) {
+                        // buy
+                        buyOrSell = -prices[i] + dp[i+1][trasactionsRemaining][1];
+                    } else {
+                        //sell
+                        buyOrSell = prices[i] + dp[i+1][trasactionsRemaining+1][0];
+                    }
+                    dp[i][trasactionsRemaining][holding] = Math.max(dontDoAnything, buyOrSell);
+                }
+            }
+        }
+        return dp[0][0][0]; // k transactions remaining
+    }
+
+    public int maxProfit4(int k, int[] prices) {
+        //bottom up dp
+        int[][][] dp = new int[prices.length +1][k +1][2];
+        for(int i=prices.length-1; i >=0; i--) {
+            for( int trasactionsRemaining =k-1; trasactionsRemaining >=0; trasactionsRemaining--) { // notice k-1 because of 0 based index
+                for(int holding =0; holding < 2; holding ++) {
+                    int dontDoAnything = dp[i+1][trasactionsRemaining][holding];
+                    int buyOrSell;
+                    if(holding ==0) {
+                        // buy
+                        buyOrSell = -prices[i] + dp[i+1][trasactionsRemaining][1];
+                    } else {
+                        //sell
+                        buyOrSell = prices[i] + dp[i+1][trasactionsRemaining+1][0];
+                    }
+                    dp[i][trasactionsRemaining][holding] = Math.max(dontDoAnything, buyOrSell);
+                }
+            }
+        }
+        return dp[0][0][0]; // k transactions remaining
+    }
 }

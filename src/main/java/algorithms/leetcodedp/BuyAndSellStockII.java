@@ -127,7 +127,7 @@ public class BuyAndSellStockII {
 
         for (int i = prices.length - 1; i >= 0; i--) {
             for (int holding = 0; holding < 2; holding++) {
-                int notBuyOrSell = dp[i + 1][holding]; // profit it same as next index, holding value remains same as we don't do any action
+                int notBuyOrSell = dp[i + 1][holding]; // profit is same as next index, holding value remains same as we don't do any action
                 if (holding == 0) {
                     // if current holding is 0, we can buy the stock or not do anything
                     // profit will be maximum of both
@@ -160,6 +160,6 @@ public class BuyAndSellStockII {
             notHolding = Math.max(nextNotHolding, prices[i] + holding);
             System.out.println("Holding: " + holding + "Not: " + notHolding);
         }
-        return holding;// In this case, output is holding. Holding contains the overall profit
+        return holding;// In this case, output is holding. Holding contains the overall profit. Think of †he case with array length 1. notHolding will add the price, but we can't sell before buysing
     }
 }
