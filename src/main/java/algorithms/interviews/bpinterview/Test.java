@@ -1,4 +1,4 @@
-package bpinterview;
+package algorithms.interviews.bpinterview;
 
 public class Test {
     public static void main(String[] args) {

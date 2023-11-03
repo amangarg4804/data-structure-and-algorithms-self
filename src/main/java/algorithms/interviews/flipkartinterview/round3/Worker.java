@@ -1,4 +1,4 @@
-package algorithms.flipkartinterview.round3;
+package algorithms.interviews.flipkartinterview.round3;
 
 public class Worker {
     private boolean isBusy;

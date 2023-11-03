@@ -1,4 +1,4 @@
-package algorithms.flipkartinterview.round3;
+package algorithms.interviews.flipkartinterview.round3;
 
 import java.time.Duration;
 import java.time.Instant;

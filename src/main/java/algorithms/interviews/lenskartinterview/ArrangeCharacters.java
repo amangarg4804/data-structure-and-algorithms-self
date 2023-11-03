@@ -1,4 +1,4 @@
-package algorithms.lenskartinterview;
+package algorithms.interviews.lenskartinterview;
 
 import java.util.HashMap;
 import java.util.Map;
