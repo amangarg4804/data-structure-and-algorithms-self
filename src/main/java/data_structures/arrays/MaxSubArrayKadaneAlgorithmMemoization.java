@@ -16,6 +16,7 @@ public class MaxSubArrayKadaneAlgorithmMemoization {
 
 
     public static int maxSubArray(int[] A) {
+        // this also works on leetcode, notice we don't initialize maxSoFar with -infinity and maxEndingHere with 0.
         int maxSoFar=A[0], maxEndingHere=A[0];
         for (int i=1;i<A.length;++i){
             maxEndingHere= Math.max(maxEndingHere+A[i],A[i]);
