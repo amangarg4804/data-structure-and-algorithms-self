@@ -73,7 +73,7 @@ public class CoinChangeII {
 
         return total;
     }
-
+    // counting dp- base cases are not set to 0, The recurrence relation usually only includes addition terms between states, so if the base cases were set to 0, then all states would be stuck at 0.
     public int change3(int amount, int[] coins) {
         // top down dp
         // if we don't want to add duplicates to solution, we can keep moving forward, never using the coins at previous indexes

@@ -86,7 +86,7 @@ public class PaintFence {
         }
         return (numWays(n-1, k) + numWays(n-2, k)) * (k-1);
     }
-
+    //counting dp- base cases are not set to 0, The recurrence relation usually only includes addition terms between states, so if the base cases were set to 0, then all states would be stuck at 0.
     public int numWays2(int n, int k) {
         // top down dp
         if(n==0) {

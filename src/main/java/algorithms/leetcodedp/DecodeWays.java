@@ -66,7 +66,7 @@ public class DecodeWays {
         Arrays.fill(dp, -1);
         return numDecodings(s, 0, dp);
     }
-
+    // counting dp- base cases are not set to 0, The recurrence relation usually only includes addition terms between states, so if the base cases were set to 0, then all states would be stuck at 0.
     private int numDecodings(String s, int i, int[] dp) {
         if(i == s.length()) {
             return 1;
