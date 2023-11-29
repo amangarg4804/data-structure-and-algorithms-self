@@ -1,6 +1,7 @@
 package algorithms.interviews.bp;
 
-//A brave Knight "A" has an array of monsters to face, and will use a combination of might and magic to defeat as many as possible. In this challenge we'd like to know if the knight is successful at defeating them all, and if not, how many monsters are defeated.
+//A brave Knight "A" has an array of monsters to face, and will use a combination of might and magic to defeat as many as possible.
+// In this challenge we'd like to know if the knight is successful at defeating them all, and if not, how many monsters are defeated.
 //
 //A can see the monsters and their order ahead of time.  Despite being evil monsters they will politely queue and challenge A in the current order.
 // Knowing this, A can plan what to do so that it is optimal.

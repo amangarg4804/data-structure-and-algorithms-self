@@ -31,7 +31,7 @@ public class TrappingRainWater {
     }
 
     public int trap2(int[] height) {
-        // at any index. the amount of trapped water for a particular index is minumum of the maximum array element to the left and the maximum array element to the right
+        // at any index. the amount of trapped water for a particular index is minimum of the maximum array element to the left and the maximum array element to the right
         // min (max(left), max(right))
         // if none of max(left) or max(right) is greater than element at current index, the current index can't store any water
         // Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]

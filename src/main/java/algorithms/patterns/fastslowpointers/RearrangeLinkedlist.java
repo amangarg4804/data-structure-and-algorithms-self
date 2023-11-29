@@ -2,6 +2,8 @@ package algorithms.patterns.fastslowpointers;
 
 //Given the head of a Singly LinkedList, write a method to modify the LinkedList such that the nodes from the second half of the LinkedList are inserted alternately to the nodes from the first half in reverse order
 // No extra space. In place
+//https://leetcode.com/problems/reorder-list/description/
+// bitgo
 public class RearrangeLinkedlist {
 
   public static void main(String[] args) {

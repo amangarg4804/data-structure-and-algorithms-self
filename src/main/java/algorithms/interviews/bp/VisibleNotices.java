@@ -31,7 +31,7 @@ public class VisibleNotices {
         }
         notices.add(insertIndex, new Notice(left, right));
 
-        // remove hidden notices
+        // set visible to false for  hidden notices
         int checkIndex = insertIndex + 1;
         while (checkIndex < notices.size()) {
             if(notices.get(checkIndex).right <= right) {
