@@ -56,7 +56,8 @@ public class BraveKnight {
         // 3 cases
         //Case 1. Knight has enough hit counts. Knight also has potions >0
         if(hp >= hitCountRequiredToDefeatEnemy && potions >0) {
-                return Math.max(monsterDefeated(enemies, curr+1, hp-hitCountRequiredToDefeatEnemy, potions), monsterDefeated(enemies, curr +1, hp, potions-1));
+                return Math.max(monsterDefeated(enemies, curr+1, hp-hitCountRequiredToDefeatEnemy, potions),
+                        monsterDefeated(enemies, curr +1, hp, potions-1));
         } else if (hp >= hitCountRequiredToDefeatEnemy) {
             return monsterDefeated(enemies, curr+1, hp-hitCountRequiredToDefeatEnemy, potions);
         } else {

@@ -40,7 +40,7 @@ public class BestTimeBuySellStockIV {
         }
         // 3 options-
         // Options 1: neither buy nor sell - index moves to next day nothing else changes
-            int notBuyOrSell = topDown(transactions, prices, holding, index+1);
+        int notBuyOrSell = topDown(transactions, prices, holding, index+1);
         int buyOrSell = 0;
         // Option 2: Buy (only allowed when holding = 0) (you must sell the stock before you buy again      )
         if(holding == 0) {

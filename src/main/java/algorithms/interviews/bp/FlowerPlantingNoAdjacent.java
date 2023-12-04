@@ -26,6 +26,7 @@ import java.util.Set;
 //Gardens 2 and 3 have different types.
 //Gardens 3 and 1 have different types.
 //Hence, [1,2,3] is a valid answer. Other valid answers include [1,2,4], [1,4,2], and [3,2,1]
+//https://leetcode.com/problems/flower-planting-with-no-adjacent/
 public class FlowerPlantingNoAdjacent {
 
     public int[] gardenNoAdj(int n, int[][] paths) {
