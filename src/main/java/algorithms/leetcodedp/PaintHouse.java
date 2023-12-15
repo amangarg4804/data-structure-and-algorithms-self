@@ -1,10 +1,13 @@
 package algorithms.leetcodedp;
 
-//There is a row of n houses, where each house can be painted one of three colors: red, blue, or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
+//There is a row of n houses, where each house can be painted one of three colors: red, blue, or green.
+// The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent
+// houses have the same color.
 //
 //The cost of painting each house with a certain color is represented by an n x 3 cost matrix costs.
 //
-//For example, costs[0][0] is the cost of painting house 0 with the color red; costs[1][2] is the cost of painting house 1 with color green, and so on...
+//For example, costs[0][0] is the cost of painting house 0 with the color red; costs[1][2] is the cost of painting house 1
+// with color green, and so on...
 //Return the minimum cost to paint all houses.
 
 //Example 1:
@@ -45,7 +48,7 @@ public class PaintHouse {
 
     public int minCost2(int[][] costs) {
         int[][] dp = new int[costs.length][3];
-        return dp(costs, 0, -1, dp); // can't use -1 as array index so use 0 as previous initially
+        return dp(costs, 0, -1, dp);
     }
 
     private int dp(int[][] costs, int i, int previous, int[][] dp) {
@@ -69,5 +72,20 @@ public class PaintHouse {
         }
         dp[i][previous] = result;
         return dp[i][previous];
+    }
+
+    public int minCost3(int[][] costs) {
+        int[][] dp = new int[costs.length][3];
+        // last house can be painted in all 3 ways
+        for(int i=0; i< 3; i++) {
+            dp[costs.length-1][i] = costs[costs.length-1][i];
+        }
+        // iterate from 2nd last house to 0th house.
+        for(int i=costs.length-2;i>=0; i--) {
+            for(int j =0; j< 3; j++) {
+                dp[i][j] = Math.min(dp[i+1][(j+1)%3], dp[i+1][(j+2)%3]) + costs[i][j];
+            }
+        }
+        return Math.min(dp[0][0], Math.min(dp[0][1], dp[0][2]));
     }
 }
