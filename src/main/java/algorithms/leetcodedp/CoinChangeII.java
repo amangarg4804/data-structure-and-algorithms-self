@@ -107,7 +107,7 @@ public class CoinChangeII {
         // to compute the answer of a state using the smaller states. So, it takes O(n⋅amount) time to compute values for all the states.
         //Space complexity: O(n⋅amount).
         //
-        //The memo array takes O(n⋅amount)O(n \cdot \text{amount})O(n⋅amount) space.
+        //The memo array takes O(n⋅amountspace.
         //The recursion stack can grow up to a maximum size of O(n+amount) as we are reducing either the number of coins or the required amount
         // while going from one recursive call to another.
     }
