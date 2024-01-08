@@ -1,4 +1,4 @@
-package algorithms.leetcodegraph;
+package algorithms.leetcodegraph.island;
 
 //The area of an island is the number of cells with a value 1 in the island.
 public class MaxAreaOfIsland {

@@ -1,4 +1,4 @@
-package algorithms.leetcodegraph;
+package algorithms.leetcodegraph.island;
 
 import java.util.LinkedList;
 import java.util.Queue;
