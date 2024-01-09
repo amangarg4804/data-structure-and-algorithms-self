@@ -2,14 +2,14 @@ package algorithms.leetcodegraph;
 
 public class UnionFindUnionByRank {
     int[] root; // actually it is parent in case of quick union
-    int[] rank; // stores height of each node
+    int[] rank; // stores height of each vertex
 
     UnionFindUnionByRank(int size) {
         root = new int[size];
         rank = new int[size];
         for(int i=0; i< size; i++) {
             root[i] = i;
-            rank[i] =1;// initially each node has height of 1
+            rank[i] =1;// initially each vertex has height of 1
         }
     }
 
@@ -25,7 +25,7 @@ public class UnionFindUnionByRank {
         int rootY = find(y);
         if(rootX != rootY) {// if equal, means already connected, nothing to do
             if(rank[rootX] > rank[rootY]) { // if height of x is greater than height of y, then x should be the root of merged tree.
-                // Note that in this case, we don't have to increment heigh, e.g. if a tree T1 of height 3 is merged with tree T2 of height 2
+                // Note that in this case, we don't have to increment height, e.g. if a tree T1 of height 3 is merged with tree T2 of height 2
                 // and root of T1 is chosen as tree of merged tree, the height of merged tree remains the same as height of T1.
                 // In this example, 3
                 root[rootY] = rootX;
@@ -34,7 +34,7 @@ public class UnionFindUnionByRank {
             } else {
                 // both trees have same height, anyone can be chosen as root.
                 root[rootY]= rootX;
-                rank[rootX] += 1; //we should increment height of root node chosen. In this case, rootX was chosen as root of merged tree
+                rank[rootX] += 1; //we should increment height of root vertex chosen. In this case, rootX was chosen as root of merged tree
             }
         }
         // time: O(log N)- height of tree

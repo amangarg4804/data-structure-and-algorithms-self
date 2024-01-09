@@ -10,12 +10,12 @@ public class UnionFindQuickFind {
             root[i] =i;
         }
     }
-    // returns root of the node
+    // returns root of the vertex
     int find(int n) {
         return root[n];
     }
 
-    // connects two nodes
+    // connects two vertices
     void union(int x, int y) {
         int rootX = find(x);
         int rootY = find(y);

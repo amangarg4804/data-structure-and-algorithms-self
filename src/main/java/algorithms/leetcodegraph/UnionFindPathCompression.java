@@ -20,18 +20,18 @@ public class UnionFindPathCompression {
         }
     }
 
-    public int find(int n) {// returns the root of current node
+    public int find(int n) {// returns the root of current vertex
         if(root[n]==n) {
             return n;
         }
-        root[n] = find(root[n]); // update root of current node to the root of entire tree
+        root[n] = find(root[n]); // update root of current vertex to the root of entire tree
         return root[n];
     }
 
     public void union(int x, int y) {
         int rootX = find(x);
         int rootY = find(y);
-        if(rootX != rootY) {// if equal, it means nodes are already connected
+        if(rootX != rootY) {// if equal, it means vertices are already connected
             root[rootY] = rootX;
         }
     }
