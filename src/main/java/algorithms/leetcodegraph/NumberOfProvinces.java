@@ -45,17 +45,17 @@ public class NumberOfProvinces {
     public int findCircleNum(int[][] isConnected) {
 
         // Union Find using set
-        UnionFindPathCompression unionFindPathCompression = new UnionFindPathCompression(isConnected.length);
+        OptimizedDisjointSet optimizedDisjointSet = new OptimizedDisjointSet(isConnected.length);
         for(int row = 0; row < isConnected.length; row++) {
             for(int col=0; col < isConnected[row].length; col++) {
                 if(isConnected[row][col] ==1) {
-                    unionFindPathCompression.union(row, col);
+                    optimizedDisjointSet.union(row, col);
                 }
             }
         }
         Set<Integer> roots = new HashSet<>();
         for(int i=0; i< isConnected.length; i++) {
-            roots.add(unionFindPathCompression.find(i));
+            roots.add(optimizedDisjointSet.find(i));
         }
 
         return roots.size();
@@ -63,7 +63,7 @@ public class NumberOfProvinces {
 
     public int findCircleNum2(int[][] isConnected) {
         /// union find without set
-        UnionFindPathCompression unionFindPathCompression = new UnionFindPathCompression(isConnected.length);
+        OptimizedDisjointSet optimizedDisjointSet = new OptimizedDisjointSet(isConnected.length);
         int totalComponents = isConnected.length; // count each vertex as separate component initially. As we keep finding connections between two nodes. Union(merge) them and decrement totalComponents
         // e.g. let's say we have two nodes 0 and 1. So initially totalComponents are 2. If we find a connection between these nodes, then we merge them and decremenet total components by 1. So Answer in this case is 2-1 =1.
 
@@ -71,13 +71,13 @@ public class NumberOfProvinces {
             for(int col=row+1; col < isConnected[row].length; col++) {
                 // we start from row+1 because for isConnected matrix isConnected[row][col] == isConnected[col][row]
                 // so if we have already merged row 0 col 1. we should not check for col 1, row 0, otherwise we would be merging these vertices twice
-                if(isConnected[row][col] ==1 &&  unionFindPathCompression.find(row) != unionFindPathCompression.find(col)) {
+                if(isConnected[row][col] ==1 &&  optimizedDisjointSet.find(row) != optimizedDisjointSet.find(col)) {
                     // we have to check both conditions
                     // isConnected[row][col] ==1 checks for direct connectivity as per given matrix
                     //unionFindPathCompression.find(row) != unionFindPathCompression.find(col) checks whether these vertex were already connected indirectly
                     // if we don't check that, it fails for [[1,1,1],[1,1,1],[1,1,1]]. answer should be 1, but it results in 0
                     // 0 connects to 1 and 2 in first row. 1-0-2. When we start iterating row 1, 1 and 2 are already connected. So we shouldn't decrement
-                    unionFindPathCompression.union(row, col);
+                    optimizedDisjointSet.union(row, col);
                     totalComponents--;
                 }
             }
@@ -85,11 +85,11 @@ public class NumberOfProvinces {
         return totalComponents;
     }
 
-    private static class UnionFindPathCompression {
+    private static class OptimizedDisjointSet {
         int[] root;
         int[] rank;
 
-        UnionFindPathCompression(int size) {
+        OptimizedDisjointSet(int size) {
             root = new int[size];
             rank = new int[size];
             for(int i=0; i< size; i++) {
@@ -171,7 +171,7 @@ public class NumberOfProvinces {
 
     public int findCircleNum4(int[][] isConnected) {
         // using BFS
-        // For each node, if it is not visited, perform BFS on it and mark each of it's connectd vertices as visited
+        // For each node, if it is not visited, perform BFS on it and mark each of it's connected vertices as visited
         int count =0;
         boolean[] visited = new boolean[isConnected.length];
         for(int i=0; i< isConnected.length; i++) {
