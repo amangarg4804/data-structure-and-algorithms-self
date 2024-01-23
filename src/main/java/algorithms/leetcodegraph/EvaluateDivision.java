@@ -120,7 +120,4 @@ public class EvaluateDivision {
         return -1;
     }
 
-    public double[] calcEquation2(List<List<String>> equations, double[] values, List<List<String>> queries) {
-
-    }
 }

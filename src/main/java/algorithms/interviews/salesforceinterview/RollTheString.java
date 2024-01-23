@@ -75,9 +75,9 @@ public class RollTheString {
          ch1 = (char) (97 + (ch1 - 'a' + roll) % 26);
         char ch2='z';
         ch2 = (char) ((ch2 + roll) % 26);
-        System.out.println(ch); // This will also print 'e'
-        System.out.println(ch1);
-        System.out.println(ch2);
+        System.out.println("ch: " + ch); // This will also print 'e'
+        System.out.println("ch1: " + ch1);
+        System.out.println("ch2: " + ch2);
 
     }
 }
