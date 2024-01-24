@@ -21,6 +21,7 @@ public class PreOrderTraversal {
         preorderTraversal(root.right, result);
     }
 
+
     public List<Integer> preorderTraversalIterative(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if(root==null) {

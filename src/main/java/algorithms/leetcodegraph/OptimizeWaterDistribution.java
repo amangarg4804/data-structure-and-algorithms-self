@@ -110,4 +110,55 @@ public class OptimizeWaterDistribution {
             this.pipeCost = pipeCost;
         }
     }
+
+    public int minCostToSupplyWater2(int n, int[] wells, int[][] pipes) {
+        // Another way to form an MST is by using Kruskal's Algorithm using Disjoint set
+        // In prim's algorithm we used greedy approach to add nodes one by one
+        // here we won't add nodes, but we will sort all edges by their weight and join  them
+        // we won't be using a set data structure but a Disjoint Set
+        // Here too, we will create a virtual node to handle well cost
+        // We require a sorted list of weighted edges. we can either create a class Edge with house1, house2 and weight or we can use an int[] array
+        // a class is more readable
+        List<Edge> edges = new ArrayList<>();
+        //first let's create edges for wells, for each well create the edge from corresponding house no to 0th node
+        // notice that edges are automatically bidirectional when we use the Edge class, no need to add twice
+        for(int i=0; i< wells.length; i++) {
+            edges.add(new Edge(0, i+1, wells[i])); // house numbers inside wells array are 1 based, so we do i+1
+        }
+        //we now add edges for all pipes
+        for(int i=0; i< pipes.length; i++) {
+            edges.add(new Edge(pipes[i][0], pipes[i][1], pipes[i][2]));
+        }
+        // sort the edges by their cost
+        Collections.sort(edges, (e1,e2) -> e1.cost -e2.cost);
+        // create a disjoint set with size equals no of houses + 1 for virtual house/node
+        OptimizedDisjointSet ds = new OptimizedDisjointSet(n+1);
+        // iterate over all edges and add the edge if not already connected
+        // keep track of total cost
+        int cost=0;
+        for(Edge edge : edges) {
+            if(ds.find(edge.house1) != ds.find(edge.house2)) {// roots are not equal, in other words, the nodes are not connected
+                // add the node to MST and increment cost
+                ds.union(edge.house1, edge.house2);
+                cost+=edge.cost;
+            }
+            // Possible optimization: we know that union function itself calls find() method of given nodes and performs merge
+            // only if result of find() is not equal. What we can do is make the union method return a boolean. If union methods starts returning whether the merge
+            // operation was performed or not, the won't require to check the find method condition here. This optimization will reduce calls to find method
+
+        }
+        return cost;
+     }
+
+     private static class Edge {
+        private int house1;
+        private int house2;
+        private int cost;
+
+         public Edge(int house1, int house2, int cost) {
+             this.house1 = house1;
+             this.house2 = house2;
+             this.cost = cost;
+         }
+     }
 }

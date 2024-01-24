@@ -182,7 +182,7 @@ public class GraphValidTree {
             adjacencyList.get(edge[1]).add(edge[0]);
         }
         // to check that a Graph is fully connected, we use a Set containing all visited nodes.
-        // We start from Node 0 and visit all connected nodes. At the end the visited Set should contain n number of nodes for the grapoh to be fully connected
+        // We start from Node 0 and visit all connected nodes. At the end the visited Set should contain n number of nodes for the graph to be fully connected
         // In other words, from Node 0, we should be able to visit every node
         Set<Integer> visited =new HashSet<>();
         visited.add(0);
