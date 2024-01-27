@@ -47,7 +47,8 @@ public class CloneGraph {
         // data structures required;
         // 1.  can create a hashmap to keep track of whether we have already created new node and reuse the node
         // 2. visited set
-        // 3. New node
+        // 3. stack for dfs
+        // 4. New node
         if(node==null) {
             return null;
         }
@@ -80,6 +81,108 @@ public class CloneGraph {
             }
         }
         return newNode;
+    }
+
+    public Node cloneGraph2(Node node) {
+        //  BFS
+        // Graph is connected-meaning each node is connected to other node
+        // Graph is undirected-so if node 1 is in neighbour list of  node 2. Then node 2 will also be in neighbour list of node 1
+        // the given node is always first node- val 1
+        // which data structure to choose?
+        // to clone the graph, we have to take care of following:
+        // 1. each node value has to be cloned. So if there are n nodes in a graph, we will be creating n new node objects
+        // 2. We have to prevent creating duplicate nodes. It is possible that a node is present as neighbour of multiple nodes.
+        // ALso we have to keep track whether we already created a new object of node val so we don't mistakenly create another node with same val
+        // 3. Connections have to be maintained.
+        // 4. While we can encounter a node multiple times, we don't want to visit neighbours of a node twice.
+        //5. we have to visit every node- we can use either BFS or DFS- queue or stack
+        // data structures required;
+        // 1.  can create a hashmap to keep track of whether we have already created new node and reuse the node
+        // 2. visited set
+        // 3. Queue for BFS
+        // 3. New node
+        if(node==null) {
+            return null;
+        }
+        Map<Integer, Node> valToClonedNode = new HashMap<>();
+        Set<Integer> visited = new HashSet<>();
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+        Node newNode =new Node(node.val);
+        valToClonedNode.put(node.val, newNode);
+        visited.add(node.val);// this is a undirected graph. we have to add to visited before so we don't reach this node again through any of the neighbours
+        while (!q.isEmpty()) {
+            Node current = q.poll();
+
+            //         2
+            //    1
+            //         3
+            // 1 has neighbours 2 and 3. 2 has neighbours 1 and 3. 3 has neighbours 1 and 2
+            if(current.neighbors ==null) {
+                continue;
+            }
+            for(Node neighbour: current.neighbors) {
+                Node cloneNeighbour = valToClonedNode.getOrDefault(neighbour.val, new Node(neighbour.val));
+                valToClonedNode.put(neighbour.val, cloneNeighbour);
+                // add the cloned neighbour to the cloned node
+                valToClonedNode.get(current.val).neighbors.add(cloneNeighbour);
+                if(!visited.contains(neighbour.val)) {
+                    visited.add(neighbour.val);
+                    q.add(neighbour);
+                }
+            }
+        }
+        return newNode;
+        //Time Complexity : O(N+M) where N is a number of nodes (vertices) and M is a number of edges.
+    }
+
+    public Node cloneGraph3(Node node) {
+        //  recursive DFS
+        // Graph is connected-meaning each node is connected to other node
+        // Graph is undirected-so if node 1 is in neighbour list of  node 2. Then node 2 will also be in neighbour list of node 1
+        // the given node is always first node- val 1
+        // which data structure to choose?
+        // to clone the graph, we have to take care of following:
+        // 1. each node value has to be cloned. So if there are n nodes in a graph, we will be creating n new node objects
+        // 2. We have to prevent creating duplicate nodes. It is possible that a node is present as neighbour of multiple nodes.
+        // Also we have to keep track whether we already created a new object of node val so we don't mistakenly create another node with same val
+        // 3. Connections have to be maintained.
+        // 4. While we can encounter a node multiple times, we don't want to visit neighbours of a node twice.
+        //5. we have to visit every node- we can use either BFS or DFS- queue or stack
+        // data structures required;
+        // 1.  can create a hashmap to keep track of whether we have already created new node and reuse the node
+        // 2. visited set
+        // 3. New node
+        if(node==null) {
+            return null;
+        }
+        Map<Integer, Node> valToClonedNode = new HashMap<>();
+        Set<Integer> visited = new HashSet<>();
+        Node newNode =new Node(node.val);
+        valToClonedNode.put(node.val, newNode);
+        visited.add(node.val);// this is an undirected graph. we have to add to visited before so we don't reach this node again through any of the neighbours
+        //         2
+        //    1
+        //         3
+        // 1 has neighbours 2 and 3. 2 has neighbours 1 and 3. 3 has neighbours 1 and 2
+        dfs(valToClonedNode, visited, node);
+        return newNode;
+    }
+
+    private void dfs(Map<Integer, Node> valToClonedNode, Set<Integer> visited, Node current) {
+        if(current.neighbors ==null) {
+            return;
+        }
+        for(Node neighbour: current.neighbors) {
+            Node cloneNeighbour = valToClonedNode.getOrDefault(neighbour.val, new Node(neighbour.val));
+            valToClonedNode.put(neighbour.val, cloneNeighbour);
+            // add the cloned neighbour to the cloned node
+            valToClonedNode.get(current.val).neighbors.add(cloneNeighbour);
+            if(!visited.contains(neighbour.val)) {
+                visited.add(neighbour.val);
+                dfs(valToClonedNode, visited, neighbour);
+            }
+        }
     }
 
     private static class Node {
