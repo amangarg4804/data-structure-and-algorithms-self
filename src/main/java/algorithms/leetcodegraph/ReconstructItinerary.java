@@ -211,7 +211,7 @@ public class ReconstructItinerary {
                 dfs(nextDestination, graph, result);
             }
         }
-        result.addFirst(source);
+        result.add(0,source);
     }
 
 
