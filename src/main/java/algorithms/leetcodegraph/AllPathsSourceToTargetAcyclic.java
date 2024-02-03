@@ -22,20 +22,19 @@ package algorithms.leetcodegraph;
 //All the elements of graph[i] are unique.
 //The input graph is guaranteed to be a DAG.
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class AllPathsSourceToTargetAcyclic {
 
     // acyclic graph
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        // iterative dfs
         // graph is already given, no need of an adjacency list
         // each index in the array contains an array of neighbours
         // we have to find all paths from node 0 to node n-1
         // nogte that this is a directed graph
         List<List<Integer>> result = new ArrayList<>();
-        int target = graph.length-1;
+        int target = graph.length - 1;
         // which all data structures do we require?
         // 1. a list for current path
         // 2. A Stack containing all eligible paths
@@ -50,8 +49,8 @@ public class AllPathsSourceToTargetAcyclic {
         stack.push(path);
         while (!stack.isEmpty()) {
             List<Integer> currentPath = stack.pop();
-            int lastNodeInCurrentPath = currentPath.get(currentPath.size()-1);
-            if(lastNodeInCurrentPath==target) {
+            int lastNodeInCurrentPath = currentPath.get(currentPath.size() - 1);
+            if (lastNodeInCurrentPath == target) {
                 result.add(currentPath);
                 continue;
             }
@@ -59,10 +58,10 @@ public class AllPathsSourceToTargetAcyclic {
             //  0
             //     2    3
             // start node 1, target 3
-            for(int neighbour: graph[lastNodeInCurrentPath]) {
-                    List<Integer> nextPath = new ArrayList<>(currentPath);
-                    nextPath.add(neighbour);
-                    stack.add(nextPath);
+            for (int neighbour : graph[lastNodeInCurrentPath]) {
+                List<Integer> nextPath = new ArrayList<>(currentPath);
+                nextPath.add(neighbour);
+                stack.add(nextPath);
             }
         }
         return result;
@@ -74,7 +73,7 @@ public class AllPathsSourceToTargetAcyclic {
         // 1. a list for current path
         // 2. Do we require a visited set or boolean array? The answer is NO, because this is an "acyclic" graph.
         // 3. result list
-        int target = graph.length-1;
+        int target = graph.length - 1;
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> currentPath = new ArrayList<>();
         currentPath.add(0);
@@ -83,12 +82,12 @@ public class AllPathsSourceToTargetAcyclic {
     }
 
     private void dfs(List<List<Integer>> result, List<Integer> currentPath, int[][] graph, int target) {
-        int lastNodeCurrentPath = currentPath.get(currentPath.size()-1);
-        if(lastNodeCurrentPath == target) {
+        int lastNodeCurrentPath = currentPath.get(currentPath.size() - 1);
+        if (lastNodeCurrentPath == target) {
             result.add(currentPath);
             return;
         }
-        for(int neighbour : graph[lastNodeCurrentPath]) {
+        for (int neighbour : graph[lastNodeCurrentPath]) {
             // Two cases to terminate the recursion
             // 1. As we keep on visiting neighbours of deeper nodes, as this is an acyclic graph, there will come a node from where we can't go any further
             // that will help in terminating the recursion
@@ -106,7 +105,7 @@ public class AllPathsSourceToTargetAcyclic {
         // 1. a list for current path
         // 2. Do we require a visited set or boolean array? The answer is NO, because this is an "acyclic" graph.
         // 3. result list
-        int target = graph.length-1;
+        int target = graph.length - 1;
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> currentPath = new ArrayList<>();// we can use LinkedList and then use addlast(int n) and removeLast() methods
         currentPath.add(0);
@@ -115,19 +114,45 @@ public class AllPathsSourceToTargetAcyclic {
     }
 
     private void backtrack(List<List<Integer>> result, List<Integer> currentPath, int[][] graph, int target) {
-        int lastNodeCurrentPath = currentPath.get(currentPath.size()-1);
-        if(lastNodeCurrentPath == target) {
+        int lastNodeCurrentPath = currentPath.get(currentPath.size() - 1);
+        if (lastNodeCurrentPath == target) {
             result.add(new ArrayList<>(currentPath));
             return;
         }
-        for(int neighbour : graph[lastNodeCurrentPath]) {
+        for (int neighbour : graph[lastNodeCurrentPath]) {
             // Two cases to terminate the recursion
             // 1. As we keep on visiting neighbours of deeper nodes, as this is an acyclic graph, there will come a node from where we can't go any further
             // that will help in terminating the recursion
             // 2. We will reach target node
             currentPath.add(neighbour);
             backtrack(result, currentPath, graph, target);
-            currentPath.remove(currentPath.size()-1);// we are passing the index to the remove method of list
+            currentPath.remove(currentPath.size() - 1);// we are passing the index to the remove method of list
         }
+    }
+
+    public List<List<Integer>> allPathsSourceTarget4(int[][] graph) {
+        // bfs
+        // all possible paths from node 0 to node n - 1
+        // Directed Acyclic graph
+        int destination = graph.length-1;
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<List<Integer>> q = new LinkedList<>();
+        List<Integer> path  = new ArrayList<>();
+        path.add(0);
+        q.add(path);
+        while (!q.isEmpty()) {
+            List<Integer> currentPath =  q.poll();
+            int lastNode = currentPath.get(currentPath.size()-1);
+            if(lastNode== destination) {
+                result.add(new ArrayList<>(currentPath));
+                continue;
+            }
+            for(int neighbour:graph[lastNode]) {
+                List<Integer> newPath = new ArrayList<>(currentPath);
+                newPath.add(neighbour);
+                q.offer(newPath);
+            }
+        }
+        return result;
     }
 }
