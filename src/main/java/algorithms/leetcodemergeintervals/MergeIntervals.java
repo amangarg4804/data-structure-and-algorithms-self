@@ -44,11 +44,12 @@ public class MergeIntervals {
             currentIndex++;
         }
         result.add(new int[]{previous[0], previous[1]});
+        return result.toArray(new int[result.size()][2]);
         // create an array from the result arraylist
-        int[][] resultArray = new int[result.size()][2];
-        for(int i = 0; i< result.size(); i++) {
-            resultArray[i] = result.get(i);
-        }
-        return resultArray;
+//        int[][] resultArray = new int[result.size()][2];
+//        for(int i = 0; i< result.size(); i++) {
+//            resultArray[i] = result.get(i);
+//        }
+//        return resultArray;
     }
 }
