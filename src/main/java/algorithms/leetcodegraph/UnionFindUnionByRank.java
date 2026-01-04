@@ -1,5 +1,6 @@
 package algorithms.leetcodegraph;
 
+// Union by Rank is an optimization for quick union disjoint sets. Because Quick Find's find() method has a time complexity of O(1)
 public class UnionFindUnionByRank {
     int[] root; // actually it is parent in case of quick union
     int[] rank; // stores height of each vertex

@@ -1,6 +1,7 @@
 package algorithms.leetcodegraph;
 
 //Path Compression Optimization - Disjoint Sets
+// similar to Union by Rank, this is also an optimization of Quick Union method- but this time, its find() method.
 //In the previous implementation of the “disjoint set”, notice that to find the root node, we need to traverse the parent nodes sequentially
 // until we reach the root node. If we search the root node of the same element again, we repeat the same operations.
 // Is there any way to optimize this process?

@@ -2,7 +2,7 @@ package algorithms.leetcodegraph;
 
 //  Quick Find - Disjoint Set
 public class UnionFindQuickFind {
-    private int[] root;
+    private int[] root; // each vertex stores its root in the array
 
     UnionFindQuickFind(int size) {
         root = new int[size];
@@ -22,7 +22,7 @@ public class UnionFindQuickFind {
         if(rootX != rootY) {
             for(int i=0; i< root.length; i++) {
                 if(root[i] == rootY) {
-                    root[i] = rootX;
+                    root[i] = rootX; // works if we do it the other way around as well.
                 }
             }
         }
@@ -50,5 +50,15 @@ public class UnionFindQuickFind {
         System.out.println(unionFindQuickFind.isConnected(2,3));
         System.out.println(unionFindQuickFind.isConnected(3,4));
         System.out.println(unionFindQuickFind.isConnected(4,0));
+        //0
+        //0
+        //0
+        //3
+        //3
+        //true
+        //true
+        //false
+        //true
+        //false
     }
 }

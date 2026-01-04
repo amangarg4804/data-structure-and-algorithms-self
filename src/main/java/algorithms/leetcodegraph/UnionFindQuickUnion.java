@@ -19,7 +19,9 @@ public class UnionFindQuickUnion {
 
     public void union(int x, int y) {
         // 1, 0 -> parent[0] ==1
+        // 1->0
         // 2, 0 -> find[2] = 2, find[0] = 1. parent[1] = 2
+        // 2->1->0
         int rootX = find(x); //1
         int rootY = find(y); //0.
         if(rootX !=rootY) {// if they are equal, it means x and y are already connected
