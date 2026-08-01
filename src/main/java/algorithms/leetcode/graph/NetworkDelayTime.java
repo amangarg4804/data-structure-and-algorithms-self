@@ -16,6 +16,7 @@ package algorithms.leetcode.graph;
 //Output: 1
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -95,65 +96,67 @@ public class NetworkDelayTime {
     }
 
     public int networkDelayTimeDijkstra(int[][] times, int n, int k) {
-        // first prepare the adjacency list
+        // No negative weights, so this is a Dijkstra problem
+        // The minimum time for all n nodes will be the maxim value in the distance array
+        // For dijkstra, we require
+        // adjacency list, priority queue (which will have node and the cost required to reach that node from source node)
+        // distance array, which stores the distance from source to that node, initially all MAX.
+
+        // 1. create the adjacency list
+        // As the nodes are marked from 1 to N in sequece, we can use List instead of Map
         List<List<int[]>> graph = new ArrayList<>();
-        for (int i = 0; i <= n; i++) { // used <= because nodes are 1 indexed, we will ignore the 0th index
+        for(int i =0; i<=n; i++) {
             graph.add(new ArrayList<>());
         }
-        for (int[] edge : times) {
-            graph.get(edge[0]).add(new int[]{edge[1], edge[2]});
+        for(int[] time : times) {
+            // directed edges- only one way
+            int source = time[0];
+            int target = time[1];
+            int timeTaken = time[2];
+            graph.get(source).add(new int[]{target, timeTaken});
         }
-        // create a time array to keep track of minimum time take for signal to reach each node
-        int[] time = new int[n + 1]; // n+1 because nodes start from 1
-        for(int i =1; i< time.length; i++) { // we shouldn't set index 0 to max value if using the foreach loop later at the end
-            time[i] = Integer.MAX_VALUE;
-        }
-        time[k] = 0;// we will visit the neighbours/edges of kth node first, initialize its time to 0
-        // priority queue's integer array contains the node at index 0, and its minimum time at index 1
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> Integer.compare(a[1], b[1]));
+        //2. Create the distance array and initilise all valaues to MAX
+        // index of the array denotes Node
+        // Value of the array denotes minimum time taken for a signal to travel from source to that Node
+        //
+        int[] distance = new int[n+1];
+        Arrays.fill(distance, Integer.MAX_VALUE);
+        distance[k] = 0;
+
+        // 3. Create a priority queue
+        // sorted by time so that the minium time node is visited first
+        // note that when using Dijkstra
+
+        // Important: same node can be inserted multiple times into the pq
+        // Duplicates happen when we find a good path to a node, push it, and later find an even better path to that same node before the first entry had a chance to be popped!
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[1] - b[1]);
         pq.offer(new int[]{k, 0});
-        while (!pq.isEmpty()) {
-            int[] currentNodeAndWeight = pq.poll();
-            int currentNode = currentNodeAndWeight[0];
-            int currentWeight = currentNodeAndWeight[1];
-            // this makes Dijkstra efficient, if the current weight itself is greater than the time
-            // PQ may contain multiple entries for the same node.
-            // 1 → 2 (10)
-            // 1 → 3 (1)
-            // 3 → 2 (1)
-            // Start: k = 1
-            // in the above example -> at one time pq will contain node 2 with weight 10 and 1
-            if (currentWeight > time[currentNode]) {
+        while(!pq.isEmpty()) {
+            int[] popped = pq.poll();
+            int currentNode = popped[0];
+            int currentDistance = popped[1];
+
+            // Should we process this Node?
+            // remember the duplicate condition. It is possible that this node was already processed previously
+            // But the previous processing may or may not have resulted in shortest path
+            // if the previous was shortest than skip processing it
+            if(distance[currentNode] < currentDistance) {
                 continue;
             }
 
-            for (int[] neighbour : graph.get(currentNode)) {
-                int newWeight = currentWeight + neighbour[1];
-                // notice that we are adding the currentWeight above,
-                // it might raise a question that since all currentWeights are initialized by Integer.MAX_VALUE
-                // we are adding to max value
-                // but that will never happen
-                // we are always adding the node to queue AFTER we have updated its weight to a value which is less than Integer.MAX_VALUE
-                // 0 <= wi <= 100
-                if (newWeight < time[neighbour[0]]) {
-                    time[neighbour[0]] = newWeight;
-                    pq.offer(new int[]{neighbour[0], newWeight});
+            for(int[] neighbour: graph.get(currentNode)) {
+                int neighbourNode = neighbour[0];
+                int neighbourDistance = distance[currentNode] + neighbour[1];
+                if(neighbourDistance < distance[neighbourNode]) {
+                    distance[neighbourNode] = neighbourDistance;
+                    pq.offer(new int[]{neighbourNode, neighbourDistance});
                 }
             }
         }
-
-        // after all nodes are visited
-        // We have to Return the minimum time it takes for all the n nodes to receive the signal
-        // minimum time to reach all nodes is the max value in time array.
-        // if any array index has value = INTEGER.MAX_VALUE, it means we couldn't reach that node
-        // we return -1, in that case
-        int ans = Integer.MIN_VALUE;
-        for (int i : time) {
-            if (i == Integer.MAX_VALUE) {
-                return -1;
-            }
-            ans = Math.max(ans, i);
+        int max = Integer.MIN_VALUE;
+        for(int i=1; i< distance.length; i++) { // skip the 0th index
+            max = Math.max(max,distance[i]);
         }
-        return ans;
+        return max == Integer.MAX_VALUE? -1: max;
     }
 }
