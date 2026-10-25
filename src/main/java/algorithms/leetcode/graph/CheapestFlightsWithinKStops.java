@@ -32,56 +32,46 @@ import java.util.PriorityQueue;
 public class CheapestFlightsWithinKStops {
 
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        // Bellman ford
-        // We don't have to create a graph for Bellman ford
+        // Bellman Ford Algo
+        // At most k stops mean at most k+1 edges
+        int atMostEdges = k+1;
+        // 1. First we need a distance array which stores the minimum cost to reach a node i
+        // by using atMostEdges
+        // We can use either 2-D array (requires k*n space)
+        // Or we can use 2 1-D arrays - first one to store the min distance by using k edges- outer for loop
+        // and the 2nd one would be used as a temp array in inner for loop
+        int[] minCost = new int[n]; // 0 <= from i, to i < n
+        Arrays.fill(minCost, Integer.MAX_VALUE);
+        minCost[src] =0;
+        // 2. We traverse atMostEdges times to find a route from source to distanation by using at most given number of edges
+        // When the first pass of for loop is over, it means we have found all routes from source to destination using at most 1 edge
+        // When the second pass of for loop is over; it means we have found all routes from source to destination
+        // using at most 2 edges
 
-        // which is the cheapest flight with at most 0 stops (1 edge)?
-        // which is the cheapest flight with at most 1 stops (2 edges)?
-        // which is the cheapest flight with at most 2 stops (3 edges)?
-
-
-        int stops = 0;
-        // Generally to traverse a graph, we use either BFS, or DFS,
-        // But when using Bellman ford , we use neither
-        // let's create an array that stores the cost of cheapest flight to reach each node(node = array index) for atmost 0 to k stops
-        // each index represent the destination node
-        int[] previous = new int[n];
-        int[] current = new int[n];
-        //initially, all flights cost infinity, because we don't know whether there is a flight from source node to that node
-        Arrays.fill(previous, Integer.MAX_VALUE);
-        Arrays.fill(current, Integer.MAX_VALUE);
-
-        // now we have to fill this array for each stop
-        // for the source node, the cost will always be zero
-        // max number of edges for n nodes = n-1
-        // Remember that max stops (= total edges-1) can be n-2, where n is number of nodes
-        // the array starts from 0 edge and then 1 edge and then so on
-        // for 0 edge, all costs are infinity
-        // if stops are 0, then edges are 1,
-        // if stops are 1, then edges are 2
-        // so, we need to fill the array till k+1 index
-        previous[src] = 0;
-
-        for(int edges =1 ; edges <=k+1 ; edges++) {
-            current[src]=0;
-            for(int[] flight :flights) {
-                int source =flight[0];
-                int dest =flight[1];
-                int cost =flight[2];
-                // Note: the source here is different from the src provided in problem statement
-                // Source to destination cost is given
-                // Now, how did we reach this source?
-                // what was the cost to reach this source previously?, it was previous[source]
-                // so the cost to reach the destination is previous[source] + cost
-                // if this cost is less than current cost to reach the destination, then we should accept this path and update current[dest]
-                if(previous[source] != Integer.MAX_VALUE && previous[source] + cost < current[dest]) {
-                    current[dest] = previous[source] + cost;
+        for(int pass = 1 ; pass <= atMostEdges; pass++) {
+            // Now we need to iterate over all edges
+            // the edges in this problem are stored in flights array
+            // Temp array is never updated in the loop
+            int [] temp = Arrays.copyOf(minCost, minCost.length);
+            for(int[] flight : flights) {
+                int currentSource = flight[0];
+                int currentDest = flight[1];
+                int currentPrice = flight[2];
+                // If the currentSource hasn't been visited yet at all, we won't updare the price of currentDest
+                if (temp[currentSource] == Integer.MAX_VALUE) {
+                    continue;
                 }
-                //  Recurrence relation: DP[k][v] = min(DP[k][v], DP[k - 1][u] + w(u, v))
+                //                 // The new price to reach currentDest node is the price paid to reach currentSource + the price from currentSource to CurrentDest
+
+                int newPrice =  temp[currentSource] + currentPrice;
+                if(minCost[currentDest] > newPrice) {
+                    // Since the minCost is getting updated inside the loop we have to check  minCost[currentDest] and not tmp[currentDest]
+                    minCost[currentDest] = newPrice;
+                }
             }
-            previous = current.clone();
+
         }
-        return current[dst] == Integer.MAX_VALUE? -1 : current[dst];
+        return minCost[dst] == Integer.MAX_VALUE? -1: minCost[dst];
 
 
     }
@@ -191,5 +181,5 @@ public class CheapestFlightsWithinKStops {
 
         }
 
-    
+
 }
