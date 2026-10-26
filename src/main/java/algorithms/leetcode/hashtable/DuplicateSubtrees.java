@@ -1,7 +1,6 @@
-package algorithms.leetcodehashtable;
+package algorithms.leetcode.hashtable;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 // Given the root of a binary tree, return all duplicate subtrees.
 // For each kind of duplicate subtrees, you only need to return the root node of any one of them.

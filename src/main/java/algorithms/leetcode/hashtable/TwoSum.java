@@ -1,4 +1,4 @@
-package algorithms.leetcodehashtable;
+package algorithms.leetcode.hashtable;
 
 import java.util.*;
 
@@ -19,16 +19,12 @@ public class TwoSum {
     }
 
     public int[] twoSum1(int[] nums, int target) {
+        // most efficient, using hashmap
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i]) && target - nums[i] == nums[i]) {
-                // duplicate number can exist in given array but we are given that there is exactly one solution. So, we can check if the existing value in map and current value form target
-                return new int[]{map.get(nums[i]), i};
-            }
             if (map.containsKey(target - nums[i])) {
                 return new int[]{map.get(target - nums[i]), i};
             }
-
             map.put(nums[i], i);
         }
         return new int[]{-1, -1};

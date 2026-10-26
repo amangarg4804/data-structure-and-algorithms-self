@@ -3,7 +3,7 @@ package algorithms.interviews.bp;
 //Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
 public class TrappingRainWater {
     public int trap(int[] height) {
-        // at any index. the amount of trapped water for a particular index is minumum of the maximum array element to the left and the maximum array element to the right
+        // at any index. the amount of trapped water for a particular index is miniumum of the maximum array element to the left and the maximum array element to the right
         // min (max(left), max(right))
         // if none of max(left) or max(right) is greater than element at current index, the current index can't store any water
         // Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
@@ -14,6 +14,9 @@ public class TrappingRainWater {
         // Create an array holding left max for each index
         maxLeftArr[0] = height[0];
         for(int i = 1; i< height.length; i++) {
+            // Notice that we always include the height of current index while calculating max.
+            // Let's say there is an index is middle which has the max height and all left and right indices to it have smaller height than it.
+            // then it can hold 0 water.
             maxLeftArr[i] = Math.max(maxLeftArr[i-1], height[i]);
         }
         // Create an array holding right max for each index, for right max, we have to iterate from right
@@ -27,7 +30,7 @@ public class TrappingRainWater {
             ans += Math.min(maxLeftArr[i], maxRightArr[i]) - height[i]; // we have to subtract current height from minimum of left and right
         }
         return ans;
-
+        // this is a dp solution
     }
 
     public int trap2(int[] height) {

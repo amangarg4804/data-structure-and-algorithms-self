@@ -1,4 +1,4 @@
-package algorithms.leetcodehashtable;
+package algorithms.leetcode.hashtable;
 
 public class MyHashSet {
     MyHashMap map;
